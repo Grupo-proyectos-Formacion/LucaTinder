@@ -1,0 +1,14 @@
+2019-10-17 12:55:58,642 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-10-17 14:11:56,972 [Worker-44: Import Getting Started Content] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.grupo2:lucatinder:0.0.1-SNAPSHOT @ C:\Users\admin\Documents\GitHub\LucaTinder\MVC_REST\lucatinder\lucatinder\pom.xml.
+2019-10-17 14:12:18,537 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /lucatinder/src/main/java
+2019-10-17 14:12:18,538 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /lucatinder/src/main/resources
+2019-10-17 14:12:18,553 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /lucatinder/src/main/resources
+2019-10-17 14:12:18,576 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /lucatinder/src/test/java
+2019-10-17 14:12:20,230 [Worker-44: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 39 sec
+2019-10-17 14:12:20,234 [Worker-44: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2019-10-17 14:12:21,157 [Worker-44: Import Getting Started Content] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.grupo2:lucatinder:0.0.1-SNAPSHOT @ C:\Users\admin\Documents\GitHub\LucaTinder\MVC_REST\lucatinder\lucatinder\pom.xml.
+2019-10-17 14:12:27,221 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /lucatinder/src/main/java
+2019-10-17 14:12:27,221 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /lucatinder/src/main/resources
+2019-10-17 14:12:27,222 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /lucatinder/src/main/resources
+2019-10-17 14:12:27,223 [Worker-44: Import Getting Started Content] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /lucatinder/src/test/java
+2019-10-17 14:12:28,859 [Worker-44: Import Getting Started Content] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 8 sec
