@@ -26,7 +26,7 @@ import com.grupo2.lucatinder.model.Usuario;
 public class ServicioUsuario implements ServiceGenerico<Usuario>{
 	
 	@Autowired
-	@Qualifier("postDAO")
+	@Qualifier("daoUsuario")
 	private DaoGenerico<Usuario> daoUsuario;
 
 	@Override
