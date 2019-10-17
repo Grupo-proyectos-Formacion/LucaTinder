@@ -30,7 +30,7 @@ public class ControlUsuario {
 		return "/altaUsuario";
 	}
 	
-	@GetMapping("listar/usuario")
+	@GetMapping("listar/usuarios")
 	public String listar(Model model) {
 		List<Usuario> lista = service.listar();
 		model.addAttribute("lista",lista);
