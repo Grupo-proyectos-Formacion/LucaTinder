@@ -1,5 +1,7 @@
 package com.grupo2.lucatinder.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +22,22 @@ public class ControlUsuario {
 	public String crear(Model model){
 		model.addAttribute("usuario", new Usuario());
 		return "/crearUsuario";
-		
 	}
 	
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario){
 		service.crear(usuario);
 		return "/altaUsuario";
-		
 	}
+	
+	@GetMapping("listar/usuario")
+	public String listar(Model model) {
+		List<Usuario> lista = service.listar();
+		model.addAttribute("lista",lista);
+		return "/index";
+	}
+	
+	
 	
 	
 }
