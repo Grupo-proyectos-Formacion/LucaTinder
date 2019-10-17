@@ -16,8 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import com.grupo2.lucatinder.dao.DaoGenerico;
+import com.grupo2.lucatinder.dao.DaoUsuario;
 import com.grupo2.lucatinder.model.Usuario;
 
 @Service
@@ -26,8 +25,7 @@ import com.grupo2.lucatinder.model.Usuario;
 public class ServicioUsuario implements ServiceGenerico<Usuario>{
 	
 	@Autowired
-	@Qualifier("daoUsuario")
-	private DaoGenerico<Usuario> daoUsuario;
+	private DaoUsuario daoUsuario;
 
 	@Override
 	public Usuario crear(Usuario objeto) {

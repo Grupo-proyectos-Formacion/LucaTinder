@@ -2,6 +2,7 @@ package com.grupo2.lucatinder.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.grupo2.lucatinder.model.Usuario;
 
@@ -9,9 +10,11 @@ import com.grupo2.lucatinder.model.Usuario;
 * Clase DaoUsuario implementa DaoGenerico
 * 
 *
-* @author 
+* @author Sisa Romero
 *
 */
+
+@Repository
 @Component("daoUsuario")
 public interface DaoUsuario extends JpaRepository <Usuario,Integer >  {
 

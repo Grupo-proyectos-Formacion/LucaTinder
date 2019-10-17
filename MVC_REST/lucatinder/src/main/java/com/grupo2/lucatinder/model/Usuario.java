@@ -18,7 +18,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue
 	@Column(name="id_usuario")
-	private int id;
+	private int idUsuario;
 	
 	@Column(name="nombre_usuario")
 	private String nombreUsuario;
@@ -35,12 +35,13 @@ public class Usuario {
 	@Column(name="sexo_usuario")
 	private Boolean sexoUsuario;
 
-	public int getId() {
-		return id;
+
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getNombreUsuario() {
@@ -85,10 +86,12 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", descripcionUsuario=" + descripcionUsuario
-				+ ", edadUsuario=" + edadUsuario + ", ciudadUsuario=" + ciudadUsuario + ", sexoUsuario=" + sexoUsuario
-				+ "]";
+		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", descripcionUsuario="
+				+ descripcionUsuario + ", edadUsuario=" + edadUsuario + ", ciudadUsuario=" + ciudadUsuario
+				+ ", sexoUsuario=" + sexoUsuario + "]";
 	}
+
+	
 	
 	
 	
