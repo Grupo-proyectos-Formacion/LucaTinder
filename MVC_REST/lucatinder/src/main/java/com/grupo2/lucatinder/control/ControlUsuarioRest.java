@@ -45,14 +45,14 @@ public class ControlUsuarioRest {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(result.getId())
+				.buildAndExpand(result.getIdUsuario())
 				.toUri();
 		return ResponseEntity.created(location).build();		
 	}
 		 
-	@GetMapping("/listar/usuarios")
+	@GetMapping("/listar/usuarios/rest")
 	public List<Usuario> listar(){
-		return serviceGenerico.listar();
+		return service.listar();
 	}
 	
 	

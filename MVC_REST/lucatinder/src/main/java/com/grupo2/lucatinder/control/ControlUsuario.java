@@ -22,14 +22,13 @@ public class ControlUsuario {
 	public String crear(Model model){
 		model.addAttribute("usuario", new Usuario());
 		return "usuarios/crearUsuario";
-		
 	}
 	
 	@PostMapping("/crear/usuario")
-	public String guardar(@ModelAttribute Usuario usuario){
+	public String guardar(@ModelAttribute Usuario usuario, Model model){
 		System.out.println(usuario);
-		service.crear(usuario);
-		return "/altaUsuario";
+		 model.addAttribute("usuario" , service.crear(usuario));
+		return "/usuarios/usuario";
 	}
 	
 	@GetMapping("listar/usuarios")
