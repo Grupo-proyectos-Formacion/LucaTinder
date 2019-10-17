@@ -22,10 +22,10 @@
 	</nav>
 ​    <div class="p-3 mb-2 bg-danger text-white">
 		<table align="center">
-			<form th:action="@{/saveUser}"  th:object="${user}"
+			<form th:action="@{/saveusuario}"  th:object="${usuario}"
 				method="post">
 				<tr>
-					<td><input type="hidden" th:field="${user.id}" /></td>
+					<td><input type="hidden" th:field="${usuario.id}" /></td>
 				</tr>
 				<tr>
 					<td>Nombre</td>
@@ -35,12 +35,12 @@
 					<td>Sexo</td>
 				</tr>
 				<tr>
-					<td><input type="text" th:field="${user.nombreUsuario}" th:value="${user.nombreUsuario}"/></td>
-					<td><input type="text" th:field="${user.descipcionUsuario}" th:value="${user.descripsionUsuario}"/></td>
-					<td><input type="text" th:field="${user.edadUsuario}" th:value="${user.EdadUsuario}"/></td>​
-					<td><input type="text" th:field="${user.ciudadUsuario}" th:value="${user.ciudadUsuario}"/></td>
+					<td><input type="text" th:field="${usuario.nombreUsuario}" th:value="${usuario.nombreUsuario}"/></td>
+					<td><input type="text" th:field="${usuario.descipcionUsuario}" th:value="${usuario.descripsionUsuario}"/></td>
+					<td><input type="text" th:field="${usuario.edadUsuario}" th:value="${usuario.EdadUsuario}"/></td>​
+					<td><input type="text" th:field="${usuario.ciudadUsuario}" th:value="${usuario.ciudadUsuario}"/></td>
 					<td> 
-					    <select th:field="${user.sexo}" th:value="${user.sexo}" >
+					    <select th:field="${usuario.sexo}" th:value="${usuario.sexo}" >
 					        <option type="text">Hombre</option>
 					        <option type="text" >Mujer</option>
 					    </select>
