@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grupo2.lucatinder.model.Usuario;
@@ -35,11 +36,17 @@ public class ControlUsuario {
 	@GetMapping("listar/usuarios")
 	public String listar(Model model) {
 		List<Usuario> lista = service.listar();
-		model.addAttribute("lista",lista);
+		model.addAttribute("usuarios", lista);
 		return "/index";
 	}
 	
-	
+	@GetMapping("/listar/posiblesMatches/{id}")
+	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
+		List<Usuario> lista = service.posiblesMatches(id);
+		model.addAttribute("usuarios", lista);
+		return "/listaMatches";
+	}
 	
 	
 }
+	

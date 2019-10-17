@@ -52,7 +52,7 @@ public class ControlUsuarioRest {
 		 
 	@GetMapping("/listar/usuarios")
 	public List<Usuario> listar(){
-		return serviceGenerico.listar();
+		return service.listar();
 	}
 	
 	
