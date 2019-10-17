@@ -9,7 +9,9 @@ package com.grupo2.lucatinder.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.grupo2.lucatinder.model.Usuario;
 
-public interface DaoGenerico<T> {
+
+public interface DaoGenerico<T> extends JpaRepository <T,Integer > {
 
 }
