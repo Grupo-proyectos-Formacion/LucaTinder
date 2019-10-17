@@ -30,15 +30,17 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 	@Override
 	public Usuario crear(Usuario objeto) {
 		return daoUsuario.save(objeto);
-		
 	}
 
 	@Override
 	public List<Usuario> listar() {
 		return daoUsuario.findAll();
 	}
-	
-	
+
+	@Override
+	public List<Usuario> pedirPosiblesMatches(int id) {
+		return daoUsuario.pedirPosiblesMatches(id);
+	}
 	
 	
 

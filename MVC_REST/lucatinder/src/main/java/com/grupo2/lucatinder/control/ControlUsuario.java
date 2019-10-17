@@ -42,7 +42,7 @@ public class ControlUsuario {
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
-		List<Usuario> lista = service.posiblesMatches(id);
+		List<Usuario> lista = service.pedirPosiblesMatches(id);
 		model.addAttribute("usuarios", lista);
 		return "/listaMatches";
 	}
