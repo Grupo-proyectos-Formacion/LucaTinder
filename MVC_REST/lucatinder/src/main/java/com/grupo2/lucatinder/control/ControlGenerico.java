@@ -6,3 +6,5 @@ public interface ControlGenerico<T> {
 	public void crear(T object);
 
 }
+
+
