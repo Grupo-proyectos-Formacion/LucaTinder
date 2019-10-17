@@ -18,7 +18,7 @@ import com.grupo2.lucatinder.model.Usuario;
 
 @Repository
 @Component("daoUsuario")
-public interface DaoUsuario extends JpaRepository <Usuario,Integer >  {
+public interface DaoUsuario extends JpaRepository <Usuario,Integer >, DaoUsuarioCustom  {
 	
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 }

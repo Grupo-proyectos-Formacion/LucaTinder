@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.grupo2.lucatinder.dao.DaoUsuario;
+import com.grupo2.lucatinder.dao.DaoUsuarioCustomImpl;
 import com.grupo2.lucatinder.model.Usuario;
 
 @Service
@@ -38,8 +39,13 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 	}
 
 	@Override
-	public List<Usuario> pedirPosiblesMatches(int id) {
-		return daoUsuario.pedirPosiblesMatches(id);
+	public List<Usuario> pedirPosiblesMatches(Usuario usuario) {
+		return daoUsuario.pedirPosiblesMatches(usuario);
+	}
+
+	@Override
+	public Usuario getById(int id) {
+		return daoUsuario.getOne(id);
 	}
 	
 	
