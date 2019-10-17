@@ -30,8 +30,8 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 	private DaoGenerico<Usuario> daoUsuario;
 
 	@Override
-	public void crear(Usuario objeto) {
-		daoUsuario.save(objeto);
+	public Usuario crear(Usuario objeto) {
+		return daoUsuario.save(objeto);
 		
 	}
 

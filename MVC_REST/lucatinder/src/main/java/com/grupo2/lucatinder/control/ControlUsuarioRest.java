@@ -28,7 +28,7 @@ public class ControlUsuarioRest {
 
 
 	@Autowired
-	private ServiceGenerico<Usuario> serviceGenerico;
+	private ServiceGenerico<Usuario> service;
 	/**
 	 * Crea un Usuario 
 	 * 
@@ -39,7 +39,7 @@ public class ControlUsuarioRest {
 	 */
 	@PostMapping
 	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario){
-		Usuario result = this.serviceGenerico.save(usuario);
+		Usuario result = service.crear(usuario);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
