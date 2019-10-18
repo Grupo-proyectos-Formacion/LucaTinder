@@ -56,9 +56,9 @@ public class ControlUsuarioRest {
 		return service.listar();
 	}
 	
-	@GetMapping("/listar/posiblesMatches/{id}")
+	@GetMapping("/listar/posiblesMatches/rest/{id}")
 	public List<Usuario> pedirPosiblesMatches(@PathVariable int id){
-		return service.pedirPosiblesMatches(id);
+		return service.pedirPosiblesMatches(service.getById(id));
 	}
 	
 	@PostMapping("/tratarResultadoMatch/{posibleMatch}")

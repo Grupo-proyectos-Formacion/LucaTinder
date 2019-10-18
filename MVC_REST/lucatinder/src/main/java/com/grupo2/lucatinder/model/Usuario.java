@@ -14,6 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	public Usuario(){
+		super();
+		if(this.sexoUsuario) {
+		this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
+		} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";
+		
+	}
 
 	@Id
 	@GeneratedValue
@@ -34,6 +41,9 @@ public class Usuario {
 	
 	@Column(name="sexo_usuario")
 	private Boolean sexoUsuario;
+	
+	@Column(name="imagen_usuario")
+	private String imagenUsuario;
 
 
 	public int getIdUsuario() {
@@ -84,11 +94,19 @@ public class Usuario {
 		this.sexoUsuario = sexoUsuario;
 	}
 
+	public String getImagenUsuario() {
+		return imagenUsuario;
+	}
+
+	public void setImagenUsuario(String imagenUsuario) {
+		this.imagenUsuario = imagenUsuario;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", descripcionUsuario="
 				+ descripcionUsuario + ", edadUsuario=" + edadUsuario + ", ciudadUsuario=" + ciudadUsuario
-				+ ", sexoUsuario=" + sexoUsuario + "]";
+				+ ", sexoUsuario=" + sexoUsuario + "]\n";
 	}
 
 	
