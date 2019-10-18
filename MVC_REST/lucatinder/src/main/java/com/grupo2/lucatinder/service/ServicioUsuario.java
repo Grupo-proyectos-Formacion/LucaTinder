@@ -37,7 +37,7 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 		return daoUsuario.findAll();
 	}
 
-	@Override
+	
 	public List<Usuario> pedirPosiblesMatches(int id) {
 		return daoUsuario.pedirPosiblesMatches(id);
 	}

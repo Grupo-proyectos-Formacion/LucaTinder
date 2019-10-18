@@ -46,6 +46,12 @@ public class ControlUsuario {
 		return "/listaMatches";
 	}
 	
+	@PostMapping("/tratarResultadoMatch/{posibleMatch}")
+	public String tratarResultadoMatch(@PathVariable boolean posibleMatch, @ModelAttribute Usuario usuario) {
+		service.tratarResultadoMatch(posibleMatch, usuario);
+		return "????????";
+	}
+	
 	
 }
 	
