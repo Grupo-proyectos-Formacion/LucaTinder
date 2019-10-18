@@ -19,7 +19,7 @@ public class ControlUsuario {
 	
 	@Autowired
 	private ServiceGenerico<Usuario> service;
-	private ServicioUsuario servicio;
+
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -32,13 +32,6 @@ public class ControlUsuario {
 		System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
 		return "/usuarios/usuario";
-	}
-	
-	@GetMapping("/listar/usuarios")
-	public String listar(Model model) {
-		List<Usuario> lista = service.listar();
-		model.addAttribute("usuarios", lista);
-		return "/index";
 	}	
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
