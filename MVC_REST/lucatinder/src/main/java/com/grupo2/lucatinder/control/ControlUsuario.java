@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServiceGenerico;
 
-@Controller("/")
+@Controller
 public class ControlUsuario {
 	
 	@Autowired
 	private ServiceGenerico<Usuario> service;
+	
+	@GetMapping("/")
+	public String index(Model model){
+		model.addAttribute("usuario", new Usuario());
+		return "usuarios/crearUsuario";
+	}
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -52,8 +58,6 @@ public class ControlUsuario {
 		model.addAttribute("usuario", usuario);
 		int elec=1;
 		model.addAttribute("resultado", elec);
-		String url = "https://randomuser.me/api/portraits/women/"+id+".jpg";
-		model.addAttribute("url", url);
 		return "usuarios/perfilMatch";
 	}
 	
