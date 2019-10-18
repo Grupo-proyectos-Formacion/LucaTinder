@@ -12,6 +12,4 @@ public interface ServiceGenerico<T> {
 
 	public T crear(T objeto);
 	public List<T> listar();
-	public List<T> pedirPosiblesMatches(int id);
-	public void tratarResultadoMatch(boolean match);
 }
