@@ -48,6 +48,11 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 		return daoUsuario.getOne(id);
 	}
 	
+	@Override
+	public void tratarResultadoMatch(boolean match) {
+		daoUsuario.tratarResultadoMatch(match);
+		
+	}
 	
 
 }
