@@ -38,19 +38,15 @@ public class ServicioUsuario implements ServiceGenerico<Usuario>{
 		return daoUsuario.findAll();
 	}
 
-	@Override
-	public Usuario getById(int id) {
-		return daoUsuario.getOne(id);
+	
+	public List<Usuario> pedirPosiblesMatches(int id) {
+		return daoUsuario.pedirPosiblesMatches(id);
 	}
 	
-	public void tratarResultadoMatch(boolean match, Usuario usuario) {
-		daoUsuario.tratarResultadoMatch(match, usuario);
+	
+	public void tratarResultadoMatch(boolean posibleMatch, Usuario usuario) {
+		daoUsuario.tratarResultadoMatch(posibleMatch, usuario);
 		
 	}
 	
-	public List<Usuario> pedirPosiblesMatches(Usuario usuario) {
-		return daoUsuario.pedirPosiblesMatches(usuario);
-	}
-	
-
 }
