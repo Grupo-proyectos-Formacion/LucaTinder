@@ -63,8 +63,5 @@ public class ControlUsuario {
 		else { System.out.println("No te gusta "+ tronista.getNombreUsuario()); }
 	}
 	
-	
-	
-	
 }
 	
