@@ -61,6 +61,9 @@ public class ControlUsuarioRest {
 		return service.pedirPosiblesMatches(id);
 	}
 	
+	@PostMapping("/tratarResultadoMatch/{match}")
+	public void tratarResultadoMatch(@PathVariable boolean match) {
+		service.tratarResultadoMatch(match);
+	}
 	
-
 }
