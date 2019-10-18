@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServiceGenerico;
+import com.grupo2.lucatinder.service.ServicioUsuario;
 
 @Controller("/")
 public class ControlUsuario {
 	
 	@Autowired
 	private ServiceGenerico<Usuario> service;
+	private ServicioUsuario servicio;
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -37,7 +39,7 @@ public class ControlUsuario {
 		List<Usuario> lista = service.listar();
 		model.addAttribute("usuarios", lista);
 		return "/index";
-	}
+	}	
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {

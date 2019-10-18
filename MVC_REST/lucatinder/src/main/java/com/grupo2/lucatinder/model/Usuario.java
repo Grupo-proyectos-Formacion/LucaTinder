@@ -34,7 +34,17 @@ public class Usuario {
 	
 	@Column(name="sexo_usuario")
 	private Boolean sexoUsuario;
+	
+	public Usuario() {}
 
+	public Usuario(String nombreUsuario, String descripcionUsuario, int edadUsuario,String ciudadUsuario, Boolean sexoUsuario) {
+		
+		this.nombreUsuario = nombreUsuario;
+		this.descripcionUsuario = descripcionUsuario;
+		this.edadUsuario = edadUsuario;
+		this.ciudadUsuario = ciudadUsuario;
+		this.sexoUsuario = sexoUsuario;
+	}
 
 	public int getIdUsuario() {
 		return idUsuario;
