@@ -1,9 +1,12 @@
 package com.grupo2.lucatinder.control;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,13 +46,20 @@ public class ControlUsuarioRest {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(result.getId())
+				.buildAndExpand(result.getIdUsuario())
 				.toUri();
 		return ResponseEntity.created(location).build();		
 	}
 		 
+	@GetMapping("/listar/usuarios/rest")
+	public List<Usuario> listar(){
+		return service.listar();
+	}
 	
-	
+	@GetMapping("/listar/posiblesMatches/rest/{id}")
+	public List<Usuario> pedirPosiblesMatches(@PathVariable int id){
+		return service.pedirPosiblesMatches(service.getById(id));
+	}
 	
 	
 
