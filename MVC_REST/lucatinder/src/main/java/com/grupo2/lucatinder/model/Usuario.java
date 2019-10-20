@@ -16,9 +16,9 @@ import javax.persistence.Table;
 public class Usuario {
 	public Usuario(){
 		super();
-		if(this.sexoUsuario) {
-		this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
-		} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";
+		/*if(this.sexoUsuario) {
+			this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
+			} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";*/
 		
 	}
 
