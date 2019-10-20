@@ -44,14 +44,7 @@ public class ControlUsuario {
 		System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
 		return "/usuarios/usuario";
-	}
-	
-	@GetMapping("/listar/usuarios")
-	public String listar(Model model) {
-		List<Usuario> lista = service.listar();
-		model.addAttribute("usuarios", lista);
-		return "/index";
-	}
+	}	
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {

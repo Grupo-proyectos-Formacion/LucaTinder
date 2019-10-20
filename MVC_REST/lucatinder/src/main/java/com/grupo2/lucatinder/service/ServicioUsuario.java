@@ -1,6 +1,9 @@
 package com.grupo2.lucatinder.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import com.grupo2.lucatinder.model.Usuario;
 
