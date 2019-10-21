@@ -111,5 +111,11 @@ public class ControlUsuario {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/eliminarUsuario/{id}")
+	public String eliminarUsuario(@PathVariable int id) {
+		service.eliminarUsuario(id);
+		return "usuarios/usuarioEliminado";
+	}
+	
 }
 	
