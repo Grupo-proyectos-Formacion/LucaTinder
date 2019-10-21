@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.grupo2.lucatinder.dao.DaoUsuario;
-import com.grupo2.lucatinder.dao.DaoUsuarioCustom;
-import com.grupo2.lucatinder.model.Interaccion;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 import com.grupo2.lucatinder.service.ServicioUsuarioImpl;
@@ -73,19 +69,20 @@ public class ControlUsuario {
 		return "usuarios/crearUsuario";
 	}*/
 	
+	//*
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
 		model.addAttribute("usuario", new Usuario());
 		return "usuarios/crearUsuario";
 	}
-	
+	//*
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario, Model model){
 		System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
 		return "/usuarios/usuario";
 	}	
-	
+	//*
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
 		List<Usuario> lista = service.pedirPosiblesMatches(service.getById(id));

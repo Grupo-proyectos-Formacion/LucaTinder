@@ -3,7 +3,6 @@ package com.grupo2.lucatinder.dao;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -49,8 +48,8 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 		Query query = entityManager.createNativeQuery("SELECT * FROM usuario WHERE nombre_usuario = ?", Usuario.class);
 		query.setParameter(1,nombreUsuario);
 		@SuppressWarnings("unchecked")
-		List<Usuario> resultados = query.getResultList();
- 		return resultados.get(0);
+		Usuario usuario = (Usuario) query.getSingleResult();
+ 		return usuario;
 	}
 
 	@SuppressWarnings("unchecked")

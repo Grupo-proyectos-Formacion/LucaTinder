@@ -11,10 +11,9 @@ package com.grupo2.lucatinder.service;
 import java.util.List;
 import java.util.Set;
 
-import javax.transaction.Transactional;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.grupo2.lucatinder.dao.DaoUsuario;
@@ -39,7 +38,14 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.findAll();
 	}
 
-
+	public Usuario modificarUsuario(Usuario objeto) {
+		return daoUsuario.save(objeto);
+	}
+	
+	public void eliminarUsuario(int id) {
+		daoUsuario.deleteById(id);
+	}
+	
 	public List<Usuario> pedirPosiblesMatches(int id) {
 		return daoUsuario.pedirPosiblesMatches(daoUsuario.getOne(id));
 	}
