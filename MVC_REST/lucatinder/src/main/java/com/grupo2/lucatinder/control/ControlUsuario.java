@@ -61,19 +61,20 @@ public class ControlUsuario {
 		return "usuarios/crearUsuario";
 	}*/
 	
+	//*
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
 		model.addAttribute("usuario", new Usuario());
 		return "usuarios/crearUsuario";
 	}
-	
+	//*
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario, Model model){
 		System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
 		return "/usuarios/usuario";
 	}	
-	
+	//*
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
 		List<Usuario> lista = service.pedirPosiblesMatches(service.getById(id));
