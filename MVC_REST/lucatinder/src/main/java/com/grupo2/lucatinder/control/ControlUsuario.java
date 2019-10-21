@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.grupo2.lucatinder.model.Interaccion;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioGenerico;
 import com.grupo2.lucatinder.service.ServicioUsuario;
@@ -27,11 +26,40 @@ public class ControlUsuario {
 	private Usuario usuarioSesion;
 	
 	@GetMapping("/")
+	public String login(Model model){
+		List<Usuario> usuarios = service.listar();
+		if(usuarios.size()<20) {
+			service.poblar();
+		} else System.out.println("Hay suficientes usuarios en la base de datos");
+		
+		if(usuarioSesion==null) {
+			String usuario="";
+			model.addAttribute("usuario",usuario);
+			return "usuarios/login";
+		}
+		else {
+			model.addAttribute("usuario", this.usuarioSesion);
+			return "usuarios/usuario";
+		}
+	}
+	
+	@PostMapping("/login")
+	public String tratarLogin(@RequestParam String usuario, Model model){
+		System.out.println("NOMBRE DEL USUARIO: "+usuario);
+		this.usuarioSesion = service.getByName(usuario);
+		model.addAttribute("usuario",this.usuarioSesion);
+		return "usuarios/usuario";
+	}
+	
+	/*@GetMapping("/")
 	public String index(Model model){
-		this.usuarioSesion = service.getById(1);
+		List<Usuario> usuarios = service.listar();
+		if(usuarios.size()<20) {
+			service.poblar();
+		} else System.out.println("Hay suficientes usuarios en la base de datos");
 		model.addAttribute("usuario", new Usuario());
 		return "usuarios/crearUsuario";
-	}
+	}*/
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -61,19 +89,6 @@ public class ControlUsuario {
 		model.addAttribute("eleccion",eleccion);
 		return "usuarios/perfilMatch";
 	}
-	/*
-	@PostMapping("/eleccion")
-	public void trataResultadoMatch(@PathVariable int id, @ModelAttribute Interaccion interaccion) {
-		if(interaccion.getResultadoInteraccionBool()) { 
-			System.out.println("Te mola?, ha. " );
-			service.tratarResultadoMatch(false, service.getById(interaccion.getIdUsuarioSegundoInt()));
-			}
-		else { 
-			System.out.println("No te mola huh?" ); 
-			service.tratarResultadoMatch(true, service.getById(interaccion.getIdUsuarioSegundoInt()));
-			}
-	}
-	*/
 	@PostMapping("/eleccion")
 	public String trataResultadoMatch(
 			@RequestParam(value = "id", required = false) String idTronista, 

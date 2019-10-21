@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
+</head>
+
+<body>
+	<div th:replace="usuarios/header :: navBar"></div>
+
+	<div class="row mt-5">
+		<div class="jumbotron col-8 offset-2 mt-5">
+			<h2 class="text-center">Bienvenido a Lucatinder</h2>
+			<form th:action="@{/login}"  method="POST">
+				<div class="input-group mb-3">
+					<input type="text" th:name="usuario" class="form-control"
+						placeholder="Tu nombre"
+						aria-label="Usuario" aria-describedby="basic-addon2">
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -13,7 +13,7 @@ import com.grupo2.lucatinder.model.Usuario;
 @Component
 public class DaoUsuarioFake  {
 	
-	 public List<Usuario> listaUsuario() {
+	 public static List<Usuario> listaUsuario() {
 	     
 		 ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
 		 
@@ -22,16 +22,27 @@ public class DaoUsuarioFake  {
 		
 		
 			
-			 for (int i=0; i<20;i++) {
+			 for (int i=0; i<35;i++) {
 				  				 
 				 String nombre= faker.name().firstName();
 				 int edad= faker.number().numberBetween(18, 80);
 				 String ciudad= faker.address().cityName();
 				 String descripcion= faker.friends().quote();
 				 boolean sexo = new Random().nextBoolean();
+				 if(nombre.endsWith("a")) {
+					 sexo =false;
+				 } else if(nombre.endsWith("o")) {
+					 sexo=true;
+				 }
 				 
-				 new Usuario(nombre,descripcion,edad,ciudad,sexo);	 
-				 listaUsuario.add(new Usuario(nombre,descripcion,edad,ciudad,sexo));
+				 
+				 String imagen;
+				 if(sexo) {
+					 imagen = "https://randomuser.me/api/portraits/men/"+i+".jpg";
+				 } else imagen = "https://randomuser.me/api/portraits/women/"+i+".jpg";
+				 
+				 new Usuario(nombre,descripcion,edad,ciudad,sexo,imagen);	 
+				 listaUsuario.add(new Usuario(nombre,descripcion,edad,ciudad,sexo,imagen));
 				 
 				 
 			 
