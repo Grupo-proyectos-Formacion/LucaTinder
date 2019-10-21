@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.grupo2.lucatinder.model.Usuario;
-import com.grupo2.lucatinder.service.ServicioGenerico;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 
 @Controller

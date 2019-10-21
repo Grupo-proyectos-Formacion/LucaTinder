@@ -10,14 +10,12 @@ package com.grupo2.lucatinder.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.grupo2.lucatinder.dao.DaoUsuario;
-import com.grupo2.lucatinder.dao.DaoUsuarioCustomImpl;
 import com.grupo2.lucatinder.dao.DaoUsuarioFake;
 import com.grupo2.lucatinder.model.Usuario;
 

@@ -6,18 +6,21 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo2.lucatinder.model.Usuario;
-import com.grupo2.lucatinder.service.ServicioGenerico;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 
 
@@ -28,39 +31,59 @@ import com.grupo2.lucatinder.service.ServicioUsuario;
  * Contiene métodos para Usuario
  *
  * @author Sisa,
- 
  */
-
-
 @RestController
 public class ControlUsuarioRest {
 
 
 	@Autowired
 	private ServicioUsuario service;
+	
+	private int actualUsuario;
+	
+	ObjectMapper objectMapper = new ObjectMapper();
 
 	private static final Logger logger = LoggerFactory.getLogger(ControlUsuarioRest.class);
 	
-	/**
-	 * Crea un Usuario 
-	 * 
-	 * @return
-	 *         <ul>
-	 *         <li>ResponseEntity.created(location).build();</li>
-	 *         </ul>
-	 */
+	@SuppressWarnings("serial")
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	class UsuarioNotFoundException extends RuntimeException {
+
+		public UsuarioNotFoundException() {
+			super("This user does not exist");
+		}
+	}
 	
 	private Usuario usuarioSesion;
 	
-
-	@GetMapping("/login/rest/{name}")
-	public Usuario loginUsuario(@PathVariable String nombre){	
-		Usuario us= service.getByName(nombre);
-		logger.info("-- Logeando el usuario --");
-		return us;
-	}
-		
-	
+	/**
+	 * Login Usuario  
+	 * 
+	 * @author Sisa Romero
+	 * @return
+	 *         <ul>
+	 *         <li>Devuelve Usuario</li>
+	 *         </ul>
+	 */
+	@PostMapping("/login/rest")
+		public Usuario loginUsuario(@RequestBody String nombre) throws JsonMappingException, JsonProcessingException{
+		logger.info("------ Logeando el usuario /REST ---------------");
+		logger.info(nombre);
+		String json = nombre;
+		JsonNode jsonNode = objectMapper.readTree(json);
+		String nombre2 = jsonNode.get("nombreUsuario").asText();				
+		logger.info(nombre2);	
+		Usuario  usuario= service.getByName(nombre2);
+		if(usuario != null) {
+            this.actualUsuario = usuario.getIdUsuario();
+        }
+        return usuario;
+		}
+	/**
+	 * 
+	 * Crear Usuario
+	 * 
+	 */	
 	@PostMapping("/crear/usuario/rest")
 	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario){
 		this.usuarioSesion = service.getById(72);
@@ -70,7 +93,7 @@ public class ControlUsuarioRest {
 				.path("/{id}")
 				.buildAndExpand(result.getIdUsuario())
 				.toUri();
-		logger.info("-- Creando Usuario");
+		logger.info("-- -----Creando Usuario");
 		return ResponseEntity.created(location).build();		
 	}
 		 
@@ -78,7 +101,7 @@ public class ControlUsuarioRest {
 	
 	@GetMapping("/listar/usuarios/rest")
 	public List<Usuario> listar(){
-		logger.info("--Listando usuarios");
+		logger.info("--------Listando usuarios en Rest");
 		return service.listar();
 	}
 	
@@ -91,12 +114,15 @@ public class ControlUsuarioRest {
 	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable boolean posibleMatch) {
 		service.tratarResultadoMatch(posibleMatch, this.usuarioSesion, usuario);
 	}
-	
-	
+	/**
+	 * 
+	 * Eliminar Usuario
+	 * 
+	 */
 	@DeleteMapping("/eliminar/usuario/rest/{id}")
     void deleteById(@PathVariable int id){
         this.service.eliminarUsuario(id);
-        logger.info("-- Eliminando Usuario en Rest");
+        logger.info("-------Eliminando Usuario en Rest");
 	} 
 	
 	
