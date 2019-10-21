@@ -48,8 +48,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	
 	
 	public void tratarResultadoMatch(boolean posibleMatch,Usuario usuarioPrimero, Usuario usuarioSegundo) {
-		daoUsuario.tratarResultadoMatch(posibleMatch, usuarioPrimero, usuarioSegundo);
-		
+		daoUsuario.tratarResultadoMatch(posibleMatch, usuarioPrimero, usuarioSegundo);	
 	}
 
 	@Override
