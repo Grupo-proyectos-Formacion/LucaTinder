@@ -1,6 +1,7 @@
 package com.grupo2.lucatinder.control;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,12 +34,6 @@ public class ControlUsuario {
 	
 	@Autowired
 	private ServicioUsuario service;
-	
-	@Autowired
-	private DaoUsuario daoUsuario;
-	
-	@Autowired
-	 private ServicioUsuarioImpl serviceImpl;
 	
 	private Usuario usuarioSesion;
 	
@@ -100,7 +95,8 @@ public class ControlUsuario {
 	
 	@GetMapping("/listar/matches")
 	public String listarMatchesConfirmados(Model model) {
-		List<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		Set<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
 		System.out.println(matches);
 		model.addAttribute("usuarios", matches);
 		return "usuarios/lista";

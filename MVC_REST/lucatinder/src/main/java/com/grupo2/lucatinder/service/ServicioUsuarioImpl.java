@@ -9,6 +9,7 @@
 package com.grupo2.lucatinder.service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -83,7 +84,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	}
 
 	@Override
-	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
 		return daoUsuario.pedirMatchesConfirmados(usuario);
 	}
 

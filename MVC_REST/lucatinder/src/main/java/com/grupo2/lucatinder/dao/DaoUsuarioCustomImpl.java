@@ -1,6 +1,8 @@
 package com.grupo2.lucatinder.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -53,13 +55,16 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
-		Query query = entityManager.createNativeQuery("SELECT * FROM match WHERE id_lover_uno = ? OR id_lover_dos = ?");
+	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+		Query query = entityManager.createNativeQuery("SELECT id_lover_dos FROM lucatinder_grupo2.match WHERE id_lover_uno = ?");
 		query.setParameter(1, usuario.getIdUsuario());
-		query.setParameter(2, usuario.getIdUsuario());
-		System.out.println("----------------------------IMPRIMIENDO-RESULTLIST----------------------------------");
-		System.out.println(query.getResultList());
-		return query.getResultList();
+		List<Integer> matches = query.getResultList();
+		Set<Usuario> usuariosSet = new HashSet<Usuario>();
+		for (int idUsuarioMatch : matches) {
+			usuariosSet.add(entityManager.find(Usuario.class, idUsuarioMatch));
+		}
+		return usuariosSet;
+		
 	}
 }
 
