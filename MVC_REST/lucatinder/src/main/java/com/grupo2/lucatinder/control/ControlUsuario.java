@@ -9,15 +9,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grupo2.lucatinder.model.Interaccion;
 import com.grupo2.lucatinder.model.Usuario;
-import com.grupo2.lucatinder.service.ServiceGenerico;
+import com.grupo2.lucatinder.service.ServicioGenerico;
+import com.grupo2.lucatinder.service.ServicioUsuario;
 
-@Controller("/")
+@Controller
 public class ControlUsuario {
 	
+	
 	@Autowired
-	private ServiceGenerico<Usuario> service;
+	private ServicioUsuario service;
+	
+
+	private Usuario usuarioSesion;
+	
+	@GetMapping("/")
+	public String index(Model model){
+		this.usuarioSesion = service.getById(1);
+		model.addAttribute("usuario", new Usuario());
+		return "usuarios/crearUsuario";
+	}
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -30,14 +44,7 @@ public class ControlUsuario {
 		System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
 		return "/usuarios/usuario";
-	}
-	
-	@GetMapping("/listar/usuarios")
-	public String listar(Model model) {
-		List<Usuario> lista = service.listar();
-		model.addAttribute("usuarios", lista);
-		return "/index";
-	}
+	}	
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
@@ -49,18 +56,44 @@ public class ControlUsuario {
 	@GetMapping("/listar/tronista/{id}")
 	public String perfilMatch(@PathVariable int id, Model model) {
 		Usuario usuario = service.getById(id);
-		model.addAttribute("usuario", usuario);
-		int elec=1;
-		model.addAttribute("resultado", elec);
-		String url = "https://randomuser.me/api/portraits/women/"+id+".jpg";
-		model.addAttribute("url", url);
+		String eleccion ="";
+		model.addAttribute("tronista",usuario);
+		model.addAttribute("eleccion",eleccion);
 		return "usuarios/perfilMatch";
 	}
-	
+	/*
 	@PostMapping("/eleccion")
-	public void trataResultadoMatch(@ModelAttribute int resultado,@ModelAttribute Usuario tronista) {
-		if(resultado!=0) { System.out.println("Le has dado like a "+ tronista.getNombreUsuario());}
-		else { System.out.println("No te gusta "+ tronista.getNombreUsuario()); }
+	public void trataResultadoMatch(@PathVariable int id, @ModelAttribute Interaccion interaccion) {
+		if(interaccion.getResultadoInteraccionBool()) { 
+			System.out.println("Te mola?, ha. " );
+			service.tratarResultadoMatch(false, service.getById(interaccion.getIdUsuarioSegundoInt()));
+			}
+		else { 
+			System.out.println("No te mola huh?" ); 
+			service.tratarResultadoMatch(true, service.getById(interaccion.getIdUsuarioSegundoInt()));
+			}
+	}
+	*/
+	@PostMapping("/eleccion")
+	public String trataResultadoMatch(
+			@RequestParam(value = "id", required = false) String idTronista, 
+			@RequestParam(value = "eleccion", required = false) String eleccion,
+			Model model) {
+		
+		if(eleccion.equals("match")) { 
+			System.out.println("Te mola?, ha. " );
+			service.tratarResultadoMatch(true, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
+			}
+		else if(eleccion.equals("rechazo")) { 
+			System.out.println("No te mola huh?" ); 
+			service.tratarResultadoMatch(false, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
+			}
+		
+		//System.out.println(tronista);
+		System.out.println(model);
+		System.out.println(eleccion + "Esta ha sido la eleccion");
+		
+		return "redirect:/";
 	}
 	
 }
