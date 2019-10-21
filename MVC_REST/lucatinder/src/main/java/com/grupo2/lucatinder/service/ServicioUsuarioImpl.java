@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.grupo2.lucatinder.dao.DaoUsuario;
 import com.grupo2.lucatinder.dao.DaoUsuarioCustomImpl;
+import com.grupo2.lucatinder.dao.DaoUsuarioFake;
 import com.grupo2.lucatinder.model.Usuario;
 
 @Service
@@ -35,6 +36,8 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 
 	@Override
 	public List<Usuario> listar() {
+		System.out.println("---------------IMPRIMIENDO DAOUSUARIO--------------------");
+		System.out.println(daoUsuario);
 		return daoUsuario.findAll();
 	}
 
@@ -57,6 +60,25 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	@Override
 	public List<Usuario> pedirPosiblesMatches(Usuario usuario) {
 		return daoUsuario.pedirPosiblesMatches(usuario);
+	}
+
+	@Override
+	public void poblar() {
+		List<Usuario> usuarios = this.listar();
+		if(usuarios.size()<20) {
+			usuarios = DaoUsuarioFake.listaUsuario();
+			for (Usuario usuario : usuarios) {
+				daoUsuario.save(usuario);
+			}
+		}
+		else System.out.println("La base de datos tiene suficientes usuarios");
+		
+	}
+
+	@Override
+	public Usuario getByName(String nombreUsuario) {
+		
+		return daoUsuario.getByName(nombreUsuario);
 	}
 	
 }

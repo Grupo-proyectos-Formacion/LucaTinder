@@ -47,7 +47,7 @@ public class ControlUsuarioRest {
 	
 	@PostMapping
 	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario){
-		this.usuarioSesion = service.getById(1);
+		this.usuarioSesion = service.getById(72);
 		Usuario result = service.crear(usuario);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
