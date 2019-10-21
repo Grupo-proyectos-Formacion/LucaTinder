@@ -1,0 +1,38 @@
+<!-- Default form register -->
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
+</head>
+
+<body>
+<div th:replace="usuarios/header :: navBar"></div>
+<form class="text-center border border-light p-5" th:action="@{/crear/preferencias}"  th:object="${preferencia}" method="post">
+
+    <p class="h4 mb-4">Añade tus Preferencias</p>
+	<hr>
+    <div class="form-row mb-4">
+		 <div class="col">
+            <!-- First name -->
+            <input type="hidden" th:field ="${preferencia.idPreferencia}" />
+        </div>    
+    
+        <div class="col">
+            <!-- First name -->
+            <input type="text" th:field="${preferencia.nombrePreferencia}" th:value="${preferencia.nombrePreferencia}" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombre Preferencia">
+        </div>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text"  th:field="${preferencia.descripcionPreferencia}" th:value="${preferencia.descripcionPreferencia}" id="defaultRegisterFormLastName" class="form-control" placeholder="Descripcion Preferencia">
+        </div>
+    </div>
+
+    <!-- Sign up button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Guardar</button>
+ 
+    <hr>
+  
+
+</form>
+</body>
+</html>
