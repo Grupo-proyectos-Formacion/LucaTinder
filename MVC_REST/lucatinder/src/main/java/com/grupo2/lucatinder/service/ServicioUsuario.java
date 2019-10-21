@@ -1,6 +1,9 @@
 package com.grupo2.lucatinder.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import com.grupo2.lucatinder.model.Usuario;
 
@@ -11,5 +14,5 @@ public interface ServicioUsuario extends ServicioGenerico<Usuario> {
 	public void poblar();
 	public Usuario getByName(String nombreUsario);
 	public List<Usuario> pedirMatchesConfirmados(Usuario usuario);
-	
+	public Usuario modificarUsuario(Usuario usuario);
 }

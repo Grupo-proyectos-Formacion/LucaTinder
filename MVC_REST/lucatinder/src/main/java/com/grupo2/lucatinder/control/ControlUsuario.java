@@ -9,10 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grupo2.lucatinder.dao.DaoUsuario;
+import com.grupo2.lucatinder.dao.DaoUsuarioCustom;
+import com.grupo2.lucatinder.model.Interaccion;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioUsuario;
+import com.grupo2.lucatinder.service.ServicioUsuarioImpl;
+
+/**
+ * 
+ * @author Daniel, Sisa, Julian, Luis
+ *
+ */
+
 
 @Controller
 public class ControlUsuario {
@@ -21,7 +34,12 @@ public class ControlUsuario {
 	@Autowired
 	private ServicioUsuario service;
 	
-
+	@Autowired
+	private DaoUsuario daoUsuario;
+	
+	@Autowired
+	 private ServicioUsuarioImpl serviceImpl;
+	
 	private Usuario usuarioSesion;
 	
 	@GetMapping("/")
@@ -128,6 +146,14 @@ public class ControlUsuario {
 		
 		return "redirect:/";
 	}
+	@GetMapping("/editar")
+	public String editUser(Model model) {
+		model.addAttribute("usuario", this.usuarioSesion);
+		return "/usuarios/crearUsuario";
+	}
+	
+	
+	
 	
 }
 	

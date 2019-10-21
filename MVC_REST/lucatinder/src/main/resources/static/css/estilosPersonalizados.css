@@ -1,0 +1,63 @@
+
+hr {
+    border: none;
+    height: 5px;
+    width: 50px;
+    border-radius: 2px
+}
+
+.round{
+    border-radius: 2em;
+    font-weight: bold;
+    padding: 0.8em;
+    margin: 1em 0 1em 0;
+}
+
+.orange{
+    background-color: #FF5733;
+}
+
+.white{
+    background-color: #FFFFFF;
+}
+
+.gray{
+    background-color: #333333;
+}
+.zone1{
+    height: 100vh;
+    background-image: url("./resources/static/images/imagenFondo.jpg");
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center;              
+}
+.zone2{
+    height: 100vh;
+    background-image: url("./resources/static/images/imagenFondo2.png");
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center;              
+}
+
+.botonimagenLike{
+  background-image:url(static/like.jpg);
+  background-repeat:no-repeat;
+  height:100px;
+  width:100px;
+  background-position:center;
+}
+.botonimagenDislike{
+  background-image:url(static/dislike.jpg);
+  background-repeat:no-repeat;
+  height:100px;
+  width:100px;
+  background-position:center;
+}
+
+.text-white{
+    color:#FFFFFF;
+}
+
+.img-contained {
+    max-width: 100%;
+}
