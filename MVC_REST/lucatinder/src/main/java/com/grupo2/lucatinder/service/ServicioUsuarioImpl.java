@@ -38,6 +38,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.findAll();
 	}
 
+	@Override
 	public Usuario modificarUsuario(Usuario objeto) {
 		return daoUsuario.save(objeto);
 	}
@@ -94,8 +95,5 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.pedirMatchesConfirmados(usuario);
 	}
 
-	public Usuario modificarUsuario(Usuario objeto) {
-        return daoUsuario.save(objeto);
-    }
 	
 }

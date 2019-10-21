@@ -45,7 +45,7 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 
 	@Override
 	public Usuario getByName(String nombreUsuario) {
-		Query query = entityManager.createNativeQuery("SELECT * FROM usuario WHERE nombre_usuario = ?", Usuario.class);
+		Query query = entityManager.createNativeQuery("SELECT * FROM usuario WHERE nombre_usuario = ? ORDER BY id_usuario LIMIT 1", Usuario.class);
 		query.setParameter(1,nombreUsuario);
 		@SuppressWarnings("unchecked")
 		Usuario usuario = (Usuario) query.getSingleResult();
