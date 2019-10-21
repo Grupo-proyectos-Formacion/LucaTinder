@@ -14,13 +14,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-	public Usuario(){
-		super();
-		/*if(this.sexoUsuario) {
-			this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
-			} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";*/
-		
-	}
 
 	@Id
 	@GeneratedValue
@@ -44,11 +37,15 @@ public class Usuario {
 	
 	@Column(name="imagen_usuario")
 	private String imagenUsuario;
-
-	public Usuario() { 
-		super(); 
+	
+	public Usuario(){
+		super();
+		/*if(this.sexoUsuario) {
+			this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
+			} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";*/
+		
 	}
-
+	
 	public Usuario(String nombreUsuario, String descripcionUsuario, int edadUsuario,String ciudadUsuario, Boolean sexoUsuario) {
 		
 		this.nombreUsuario = nombreUsuario;
@@ -56,6 +53,16 @@ public class Usuario {
 		this.edadUsuario = edadUsuario;
 		this.ciudadUsuario = ciudadUsuario;
 		this.sexoUsuario = sexoUsuario;
+	}
+	
+public Usuario(String nombreUsuario, String descripcionUsuario, int edadUsuario,String ciudadUsuario, Boolean sexoUsuario ,String imagenUsuario) {
+		
+		this.nombreUsuario = nombreUsuario;
+		this.descripcionUsuario = descripcionUsuario;
+		this.edadUsuario = edadUsuario;
+		this.ciudadUsuario = ciudadUsuario;
+		this.sexoUsuario = sexoUsuario;
+		this.imagenUsuario = imagenUsuario;
 	}
 
 	public int getIdUsuario() {
