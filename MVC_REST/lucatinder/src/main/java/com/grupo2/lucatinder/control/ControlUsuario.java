@@ -130,8 +130,6 @@ public class ControlUsuario {
 	}
 	@GetMapping("/editar")
 	public String editUser(Model model) {
-		
-		
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/crearUsuario";
 	}
