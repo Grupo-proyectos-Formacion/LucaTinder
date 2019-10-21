@@ -41,7 +41,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.findAll();
 	}
 
-	
+
 	public List<Usuario> pedirPosiblesMatches(int id) {
 		return daoUsuario.pedirPosiblesMatches(daoUsuario.getOne(id));
 	}
@@ -79,5 +79,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		
 		return daoUsuario.getByName(nombreUsuario);
 	}
-	
+
+	@Override
+	public void eliminar(int id) {
+		daoUsuario.deleteById(id);
+	}
+
 }

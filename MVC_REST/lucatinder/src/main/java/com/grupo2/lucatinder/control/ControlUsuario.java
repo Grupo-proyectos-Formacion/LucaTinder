@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grupo2.lucatinder.model.Usuario;
-import com.grupo2.lucatinder.service.ServicioGenerico;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 
 @Controller
@@ -50,8 +49,8 @@ public class ControlUsuario {
 		model.addAttribute("usuario",this.usuarioSesion);
 		return "usuarios/usuario";
 	}
-	
-	/*@GetMapping("/")
+	/*
+	@GetMapping("/")
 	public String index(Model model){
 		List<Usuario> usuarios = service.listar();
 		if(usuarios.size()<20) {
@@ -107,6 +106,17 @@ public class ControlUsuario {
 		//System.out.println(tronista);
 		System.out.println(model);
 		System.out.println(eleccion + "Esta ha sido la eleccion");
+		return "redirect:/";
+	}
+	
+	@GetMapping("/eliminarUsuario")
+	public String eliminarUsuario() {
+		if(usuarioSesion != null) {
+			service.eliminar(this.usuarioSesion.getIdUsuario());
+			usuarioSesion=new Usuario();
+		}else {
+			System.out.println("vacio");
+		}
 		
 		return "redirect:/";
 	}
