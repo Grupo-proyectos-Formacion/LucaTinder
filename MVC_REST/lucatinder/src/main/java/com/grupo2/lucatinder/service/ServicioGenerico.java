@@ -8,9 +8,10 @@ package com.grupo2.lucatinder.service;
 
 import java.util.List;
 
-public interface ServiceGenerico<T> {
+
+public interface ServicioGenerico<T> {
 
 	public T crear(T objeto);
 	public List<T> listar();
-	public T getById(int id); 
+	public T getById(int id);
 }

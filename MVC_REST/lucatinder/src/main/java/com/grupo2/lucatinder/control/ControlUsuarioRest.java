@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.grupo2.lucatinder.model.Usuario;
-import com.grupo2.lucatinder.service.ServiceGenerico;
+import com.grupo2.lucatinder.service.ServicioGenerico;
+import com.grupo2.lucatinder.service.ServicioUsuario;
 
 
 /**
@@ -32,7 +33,7 @@ public class ControlUsuarioRest {
 
 
 	@Autowired
-	private ServiceGenerico<Usuario> service;
+	private ServicioUsuario service;
 	/**
 	 * Crea un Usuario 
 	 * 
@@ -41,8 +42,12 @@ public class ControlUsuarioRest {
 	 *         <li>ResponseEntity.created(location).build();</li>
 	 *         </ul>
 	 */
+	
+	private Usuario usuarioSesion;
+	
 	@PostMapping
 	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario){
+		this.usuarioSesion = service.getById(1);
 		Usuario result = service.crear(usuario);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
@@ -62,9 +67,9 @@ public class ControlUsuarioRest {
 		return service.pedirPosiblesMatches(service.getById(id));
 	}
 	
-	@PostMapping("/tratarResultadoMatch/{match}")
-	public void tratarResultadoMatch(@PathVariable boolean match) {
-		service.tratarResultadoMatch(match);
+	@PostMapping("/tratarResultadoMatch/{posibleMatch}")
+	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable boolean posibleMatch) {
+		service.tratarResultadoMatch(posibleMatch, this.usuarioSesion, usuario);
 	}
 	
 	
