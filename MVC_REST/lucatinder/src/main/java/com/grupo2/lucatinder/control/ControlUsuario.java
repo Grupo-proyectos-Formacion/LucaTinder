@@ -80,6 +80,14 @@ public class ControlUsuario {
 		return "usuarios/lista";
 	}
 	
+	@GetMapping("/listar/matches")
+	public String listarMatchesConfirmados(Model model) {
+		List<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		System.out.println(matches);
+		model.addAttribute("usuarios", matches);
+		return "usuarios/lista";
+	}
+	
 	@GetMapping("/listar/tronista/{id}")
 	public String perfilMatch(@PathVariable int id, Model model) {
 		Usuario usuario = service.getById(id);

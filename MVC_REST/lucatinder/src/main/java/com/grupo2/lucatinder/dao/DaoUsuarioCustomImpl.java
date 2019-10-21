@@ -50,5 +50,16 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 		List<Usuario> resultados = query.getResultList();
  		return resultados.get(0);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+		Query query = entityManager.createNativeQuery("SELECT * FROM match WHERE id_lover_uno = ? OR id_lover_dos = ?");
+		query.setParameter(1, usuario.getIdUsuario());
+		query.setParameter(2, usuario.getIdUsuario());
+		System.out.println("----------------------------IMPRIMIENDO-RESULTLIST----------------------------------");
+		System.out.println(query.getResultList());
+		return query.getResultList();
+	}
 }
 

@@ -9,5 +9,6 @@ public interface DaoUsuarioCustom {
 	List<Usuario> pedirPosiblesMatches(Usuario user);
 	void tratarResultadoMatch(Boolean match, Usuario usuarioPrimero, Usuario usuarioSegundo);
 	Usuario getByName(String nombreUsuario); 
+	List<Usuario> pedirMatchesConfirmados(Usuario usuario);
 
 }

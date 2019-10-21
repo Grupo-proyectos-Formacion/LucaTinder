@@ -10,5 +10,6 @@ public interface ServicioUsuario extends ServicioGenerico<Usuario> {
 	List<Usuario> pedirPosiblesMatches(Usuario usuario);
 	public void poblar();
 	public Usuario getByName(String nombreUsario);
+	public List<Usuario> pedirMatchesConfirmados(Usuario usuario);
 	
 }
