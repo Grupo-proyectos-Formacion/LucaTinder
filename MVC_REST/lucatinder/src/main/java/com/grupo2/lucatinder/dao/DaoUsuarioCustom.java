@@ -4,6 +4,14 @@ import java.util.List;
 
 import com.grupo2.lucatinder.model.Usuario;
 
+/**
+* Clase DaoUsuario implementa DaoGenerico
+* 
+*
+* @author Sisa Romero
+* 
+*
+*/
 public interface DaoUsuarioCustom {
 	
 	List<Usuario> pedirPosiblesMatches(Usuario user);
