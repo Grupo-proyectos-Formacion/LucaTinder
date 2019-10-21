@@ -16,6 +16,6 @@ import com.grupo2.lucatinder.model.Usuario;
 */
 @Repository
 @Component("daoPreferencia")
-public interface DaoPreferencia  extends JpaRepository <Preferencia,Integer >, DaoCategoriaCustom{
+public interface DaoPreferencia  extends JpaRepository <Preferencia,Integer >, DaoPreferenciaCustom{
 
 }

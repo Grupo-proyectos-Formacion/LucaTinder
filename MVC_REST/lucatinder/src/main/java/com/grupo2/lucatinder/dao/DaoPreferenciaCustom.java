@@ -8,6 +8,6 @@ package com.grupo2.lucatinder.dao;
 *
 */
 
-public interface DaoCategoriaCustom {
+public interface DaoPreferenciaCustom {
 
 }
