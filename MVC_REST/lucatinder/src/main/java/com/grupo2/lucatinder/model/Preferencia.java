@@ -17,12 +17,11 @@ public class Preferencia {
 	@GeneratedValue
 	@Column(name="id_preferencia")
 	private int idPreferencia;
-	@Column(name="nomre_preferencia")
+	@Column(name="nombre_preferencia")
 	private String nombrePreferencia;
 	@Column(name="descripcion_preferencia")
 	private String descripcionPreferencia;
-	@Column(name="familia_preferencia")
-	private String familiaPreferencia;
+
 	
 	public Preferencia() {
 		super();
@@ -34,7 +33,7 @@ public class Preferencia {
 		this.idPreferencia = idPreferencia;
 		this.nombrePreferencia = nombrePreferencia;
 		this.descripcionPreferencia = descripcionPreferencia;
-		this.familiaPreferencia = familiaPreferencia;
+
 	}
 
 	public int getIdPreferencia() {
@@ -61,22 +60,16 @@ public class Preferencia {
 		this.descripcionPreferencia = descripcionPreferencia;
 	}
 
-	
-	public String getFamiliaPreferencia() {
-		return familiaPreferencia;
-	}
-
-	public void setFamiliaPreferencia(String familiaPreferencia) {
-		this.familiaPreferencia = familiaPreferencia;
-	}
-	
-	
 	@Override
 	public String toString() {
 		return "Preferencia [idPreferencia=" + idPreferencia + ", nombrePreferencia=" + nombrePreferencia
-				+ ", descripcionPreferencia=" + descripcionPreferencia + ", familiaPreferencia=" + familiaPreferencia
-				+ "]";
+				+ ", descripcionPreferencia=" + descripcionPreferencia + "]";
 	}
+
+	
+
+	
+
 
 	
 }
