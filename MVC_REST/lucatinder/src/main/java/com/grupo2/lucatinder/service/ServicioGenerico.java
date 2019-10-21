@@ -14,4 +14,5 @@ public interface ServicioGenerico<T> {
 	public T crear(T objeto);
 	public List<T> listar();
 	public T getById(int id);
+	public void eliminar(int id);
 }

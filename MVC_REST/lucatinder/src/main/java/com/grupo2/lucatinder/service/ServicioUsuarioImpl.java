@@ -80,5 +80,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		
 		return daoUsuario.getByName(nombreUsuario);
 	}
+
+	@Override
+	public void eliminar(int id) {
+		daoUsuario.eliminar(id);
+	}
 	
 }
