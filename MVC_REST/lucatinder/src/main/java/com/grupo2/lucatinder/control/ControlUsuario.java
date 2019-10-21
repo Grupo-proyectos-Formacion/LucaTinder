@@ -109,15 +109,24 @@ public class ControlUsuario {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/confirmaEliminaUsuario")
+	public String confirmaEliminaUsuario(Model model) {
+		model.addAttribute("usuario", this.usuarioSesion);
+		System.out.println(this.usuarioSesion.getIdUsuario());
+		return "usuarios/confirmarEliminaUsuario";
+	
+	}
+	
 	@GetMapping("/eliminarUsuario")
 	public String eliminarUsuario() {
+		System.out.println(this.usuarioSesion.getIdUsuario());
 		if(usuarioSesion != null) {
+			System.out.println(this.usuarioSesion.getIdUsuario());
 			service.eliminar(this.usuarioSesion.getIdUsuario());
-			usuarioSesion=new Usuario();
+			usuarioSesion=null;
 		}else {
 			System.out.println("vacio");
 		}
-		
 		return "redirect:/";
 	}
 	
