@@ -74,10 +74,10 @@ public class ControlUsuarioRest {
 		service.tratarResultadoMatch(posibleMatch, this.usuarioSesion, usuario);
 	}
 	
-	@PutMapping("usuarios/editar/{idUsuario}")
-	public Usuario editEmpleado(@PathVariable ("idUsuario") int id, @RequestBody Usuario usuario) {
-		usuario.setIdUsuario(id);
-		return service.modificarUsuario(usuario);
+	@PutMapping("usuarios/edit")
+	public Usuario editUsuario(@RequestBody Usuario usuario) {
+		 
+		return service.modificarUsuario(this.usuarioSesion);
 	}
 	
 	
