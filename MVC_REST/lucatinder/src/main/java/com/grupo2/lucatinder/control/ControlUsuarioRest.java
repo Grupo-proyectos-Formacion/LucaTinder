@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -22,7 +25,7 @@ import com.grupo2.lucatinder.service.ServicioUsuario;
  *
  * Contiene métodos para Usuario
  *
- * @author Sisa,
+ * @author Sisa,Daniel
  
  */
 
@@ -70,5 +73,12 @@ public class ControlUsuarioRest {
 	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable boolean posibleMatch) {
 		service.tratarResultadoMatch(posibleMatch, this.usuarioSesion, usuario);
 	}
+	
+	@PutMapping("usuarios/editar/{idUsuario}")
+	public Usuario editEmpleado(@PathVariable ("idUsuario") int id, @RequestBody Usuario usuario) {
+		usuario.setIdUsuario(id);
+		return service.modificarUsuario(usuario);
+	}
+	
 	
 }

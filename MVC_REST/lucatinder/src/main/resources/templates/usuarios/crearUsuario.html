@@ -19,11 +19,12 @@
 					<td>Edad</td>
 					<td>Ciudad</td>
 					<td>Sexo</td>
+					<td>Foto de perfil</td>
 				</tr>
 				<tr>
 					<td><input type="text" th:field="${usuario.nombreUsuario}" th:value="${usuario.nombreUsuario}"/></td>
 					<td><input type="text" th:field="${usuario.descripcionUsuario}" th:value="${usuario.descripcionUsuario}"/></td>
-					<td><input type="number" th:field="${usuario.edadUsuario}" th:value="${usuario.edadUsuario}"/></td>​
+					<td><input type="number" th:field="${usuario.edadUsuario}" th:value="${usuario.edadUsuario}"/></td>
 					<td><input type="text" th:field="${usuario.ciudadUsuario}" th:value="${usuario.ciudadUsuario}"/></td>
 					<td> 
 					   <select th:field="${usuario.sexoUsuario}" th:value="${usuario.sexoUsuario}" >
@@ -31,6 +32,7 @@
 					        <option th:value="1" type="text" >Mujer</option>
 					    </select> 
 					</td>
+					<td><input type="text" th:field="${usuario.imagenUsuario}" th:value="${usuario.imagenUsuario}"/></td>
 				</tr>
 				<tr align="center">
 					<td colspan="3" ><input class="btn btn-primary" type="submit" value="GUARDAR"></td>

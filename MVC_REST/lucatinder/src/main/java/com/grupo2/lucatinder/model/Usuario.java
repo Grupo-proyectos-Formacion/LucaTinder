@@ -14,13 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-	public Usuario(){
-		super();
-		/*if(this.sexoUsuario) {
-			this.imagenUsuario = "https://randomuser.me/api/portraits/women/"+this.idUsuario+".jpg";
-			} else this.imagenUsuario = "https://randomuser.me/api/portraits/men/"+this.idUsuario+".jpg";*/
-		
-	}
+	
 
 	@Id
 	@GeneratedValue

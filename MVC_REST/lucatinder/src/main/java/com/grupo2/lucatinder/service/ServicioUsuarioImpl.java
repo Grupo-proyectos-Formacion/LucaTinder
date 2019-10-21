@@ -81,4 +81,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.getByName(nombreUsuario);
 	}
 	
+
+	public Usuario modificarUsuario(Usuario objeto) {
+        return daoUsuario.save(objeto);
+    }
+	
 }
