@@ -14,7 +14,7 @@ import com.grupo2.lucatinder.service.ServicioUsuario;
 
 public class ControlPreferenciaRest {
 
-	
+	/*
 	@Autowired
 	private ServicioUsuario service;
 	
@@ -29,6 +29,6 @@ public class ControlPreferenciaRest {
 				.toUri();
 		return ResponseEntity.created(location).build();		
 	}
-	
+	*/
 	
 }
