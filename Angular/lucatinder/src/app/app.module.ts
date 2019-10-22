@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.component';
+import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AltaUsuarioComponent
+    AltaUsuarioComponent,
+    ModificarUsuarioComponent
   ],
   imports: [
     BrowserModule,
