@@ -2,6 +2,7 @@ package com.grupo2.lucatinder.control;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -111,17 +112,24 @@ public class ControlUsuarioRest {
 	
 	@GetMapping("/listar/posiblesMatches/rest/{id}")
 	public List<Usuario> pedirPosiblesMatches(@PathVariable int id){
+		logger.info("--------Listando posibles Mathes  en Rest -------");
 		return service.pedirPosiblesMatches(service.getById(id));
+	}	
+	
+	@GetMapping("/listar/pedirMatchesConfirmados/rest/{id}")
+	public Set<Usuario> pedirMatchesConfirmados(@PathVariable int id){
+		logger.info("--------Listando  Matches Confirmados  en Rest---------- ");
+		return service.pedirMatchesConfirmados(service.getById(id));
 	}
 	
-	@PostMapping("/tratarResultadoMatch/{posibleMatch}")
-	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable boolean posibleMatch) {
-		service.tratarResultadoMatch(posibleMatch, this.usuarioSesion, usuario);
+	
+	@PostMapping("/tratarResultadoMatch/{id}")
+	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable int id) {			
+		logger.info("--------Tratando resultados en Rest verificar-----------");
+		service.tratarResultadoMatch(true,this.usuarioSesion, usuario);
 	}
 	/**
-	 * 
-	 * Eliminar Usuario
-	 * 
+	 * Eliminar Usuario 
 	 */
 	@DeleteMapping("/eliminar/usuario/rest/{id}")
     void deleteById(@PathVariable int id){
@@ -129,9 +137,10 @@ public class ControlUsuarioRest {
         logger.info("-------Eliminando Usuario en Rest");
 	} 
 	
-	@PutMapping("usuarios/edit")
+	@PutMapping("/modificar/usuario")
 	public Usuario editUsuario(@RequestBody Usuario usuario) {
-		return service.modificarUsuario(this.usuarioSesion);
+		logger.info("-------Modificando Usuario en Rest");
+		return service.modificarUsuario(usuario);
 	}
 	
 	

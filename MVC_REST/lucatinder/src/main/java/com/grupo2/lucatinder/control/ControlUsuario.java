@@ -105,6 +105,7 @@ public class ControlUsuario {
 		return "usuarios/lista";
 	}
 	
+	
 	@GetMapping("/listar/tronista/{id}")
 	public String perfilMatch(@PathVariable int id, Model model) {
 		Usuario usuario = service.getById(id);
