@@ -1,6 +1,7 @@
 package com.grupo2.lucatinder.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +11,7 @@ import com.grupo2.lucatinder.dao.DaoPreferencia;
 import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.service.ServicioPreferencia;
 import com.grupo2.lucatinder.service.ServicioUsuarioImpl;
-
+@Controller
 public class ControlPreferencia {
 
 
