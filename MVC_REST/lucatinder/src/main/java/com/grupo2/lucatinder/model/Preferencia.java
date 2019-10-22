@@ -1,14 +1,17 @@
 package com.grupo2.lucatinder.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "preferencia")
-
 public class Preferencia {
 
 
@@ -21,6 +24,8 @@ public class Preferencia {
 	private String nombrePreferencia;
 	@Column(name="descripcion_preferencia")
 	private String descripcionPreferencia;
+	/*@OneToMany(cascade = CascadeType.ALL, mappedBy = "idPreferencia")
+    private List<Usuario> usuarioPreferenciaList;*/
 
 	
 	public Preferencia() {

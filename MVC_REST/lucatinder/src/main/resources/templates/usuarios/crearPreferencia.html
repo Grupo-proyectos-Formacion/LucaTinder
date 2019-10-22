@@ -1,0 +1,52 @@
+
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head >
+
+<style> 
+#rcorners2 {
+  border-radius: 25px; 
+  height:25px;
+  width:200px;
+}
+
+</style>
+
+</head>
+
+<body style="background-color:#ccccff">
+<div class="container" align="center" style="background-color:#ccccff" >
+<form class="text-center border border-light p-5" th:action="@{/crear/preferencia}"  th:object="${preferencia}" method="post">
+	<div  class="col"  style="background-color:#9595b7">
+    <p class="h4 mb-4" style="color:white" ><font size="15" ><b>Incorpora tus  Preferencias</b></font></p>
+    </div>
+	<hr>
+    <div class="form-row mb-4">
+		 <div class="col">
+            <!-- First name -->
+            <input type="hidden" th:field ="${preferencia.idPreferencia}" />
+        </div>    
+    
+        <div class="col" >
+            <!-- First name -->
+            <input type="text" th:field="${preferencia.nombrePreferencia}" th:value="${preferencia.nombrePreferencia}" id="rcorners2" class="form-control" placeholder="Nombre Preferencia">
+        </div>
+        
+        </br>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text"  th:field="${preferencia.descripcionPreferencia}" th:value="${preferencia.descripcionPreferencia}" id="rcorners2" class="form-control" placeholder="Descripcion Preferencia">
+        </div>
+    </div>
+     </br>
+     </br>
+    <!-- Sign up button -->
+    <button class="btn btn-default btn-lg" type="submit" id="rcorners2" ><b>Guardar</b></button>
+ 
+    <hr>
+</div> 
+
+</form>
+</body>
+</html>

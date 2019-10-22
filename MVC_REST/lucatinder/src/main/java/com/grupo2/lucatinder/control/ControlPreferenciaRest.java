@@ -1,9 +1,10 @@
-package com.grupo2.lucatinder.control;
+/*package com.grupo2.lucatinder.control;
 
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,6 +13,7 @@ import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 
+@Controller
 public class ControlPreferenciaRest {
 
 	/*
@@ -32,3 +34,4 @@ public class ControlPreferenciaRest {
 	*/
 	
 }
+*/
