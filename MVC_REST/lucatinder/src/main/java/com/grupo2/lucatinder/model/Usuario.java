@@ -49,11 +49,11 @@ public class Usuario {
 	@Column(name="imagen_usuario")
 	private String imagenUsuario;
 	
-	/*@OneToMany
+	@OneToMany
 	(fetch= FetchType.EAGER,   cascade = CascadeType.ALL)
 	@JoinTable(name="usuario_preferencia", joinColumns={@JoinColumn(name ="id_usuario", referencedColumnName ="id_usuario")},
-	inverseJoinColumns={@JoinColumn(name ="id_preferencia", referencedColumnName ="id_preferencia")})*/
-	@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	inverseJoinColumns={@JoinColumn(name ="id_preferencia", referencedColumnName ="id_preferencia")})
+	//@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Preferencia> preferenciaUsuario;
 	
 	

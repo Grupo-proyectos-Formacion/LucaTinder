@@ -175,7 +175,9 @@ public class ControlUsuario {
 	@PostMapping("/preferencia")
 	public String tratarDarPreferencia(@RequestParam String idPreferencia,Model model) {
 		Preferencia preferencia = servicePreferencia.getById(Integer.parseInt(idPreferencia));
+		//this.usuarioSesion.addPreferenciaUsuario(preferencia);
 		this.usuarioSesion.addPreferenciaUsuario(preferencia);
+		System.out.println("LISTA DE PREFERENCIAS DE USUARIO: "+this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/usuario";
 		}
