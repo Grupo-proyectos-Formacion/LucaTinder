@@ -29,14 +29,20 @@ public class ServicioPreferenciaImpl implements ServicioPreferencia {
 
 	@Override
 	public List<Preferencia> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return daoPreferencia.findAll();
 	}
 
 	@Override
 	public Preferencia getById(int id) {
-		// TODO Auto-generated method stub
+		daoPreferencia.getOne(id);
 		return null;
+	}
+
+	@Override
+	public void eliminar(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

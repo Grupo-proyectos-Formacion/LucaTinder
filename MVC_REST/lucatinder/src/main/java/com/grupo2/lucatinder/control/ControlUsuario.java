@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.model.Usuario;
+import com.grupo2.lucatinder.service.ServicioPreferencia;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 import com.grupo2.lucatinder.service.ServicioUsuarioImpl;
 
@@ -30,6 +33,9 @@ public class ControlUsuario {
 	
 	@Autowired
 	private ServicioUsuario service;
+	
+	@Autowired
+	private ServicioPreferencia servicePreferencia;
 	
 	private Usuario usuarioSesion;
 	
@@ -148,14 +154,30 @@ public class ControlUsuario {
 		}
 		return "redirect:/";
 	}
+	
 	@GetMapping("/editar")
 	public String editUser(Model model) {
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/crearUsuario";
 	}
 	
+	@GetMapping("/preferencia")
+	public String darPreferencia(Model model) {
+
+		String idPreferencia="";
+		model.addAttribute("idPreferencia", idPreferencia);
+		model.addAttribute("preferencias", servicePreferencia.listar());
+		System.out.println(servicePreferencia.listar());
+		return "/usuarios/preferenciaUsuario";
+	}
 	
-	
-	
+	@PostMapping("/preferencia")
+	public String tratarDarPreferencia(@RequestParam String idPreferencia,Model model) {
+		Preferencia preferencia = servicePreferencia.getById(Integer.parseInt(idPreferencia));
+		this.usuarioSesion.addPreferenciaUsuario(preferencia);
+		model.addAttribute("usuario", this.usuarioSesion);
+		return "/usuarios/usuario";
+		}
+
 }
 	

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
+</head>
+
+<body>
+	<div th:replace="usuarios/header :: navBar"></div>
+
+	​
+	<div class="p-3 mb-2 bg-danger text-white">
+		<form th:action="@{/preferencia}" 
+			method="post">
+			<table align="center">
+				<tr>
+					<td><select th:name="idPreferencia" class="form-control">
+							<option th:each="preferencia: ${preferencias}"
+								th:value="${preferencia.idPreferencia}"
+								th:text="${preferencia.nombrePreferencia}"></option>
+					</select></td>
+				</tr>
+				<tr>
+
+				</tr>
+				<tr align="center">
+					<td colspan="3"><input class="btn btn-primary" type="submit"
+						value="Añadir gusto"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+	<!-- /.container -->
+	<!-- 
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	 -->
+</body>
+</html>

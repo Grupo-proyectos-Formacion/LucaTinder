@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
+</head>
+
+<body>
+	<div th:replace="usuarios/header :: navBar"></div>
+
+​    <div class="p-3 mb-2 bg-danger text-white">
+		<table align="center">
+			<form th:action="@{/crear/preferencia}"  th:object="${preferencia}"
+				method="post">
+				<tr>
+					<td><input type="hidden" th:field="${preferencia.idPreferencia}" /></td>
+				</tr>
+				<tr>
+					<td>Nombre</td>
+					<td>Descripcion</td>
+				</tr>
+				<tr>
+					<td><input type="text" th:field="${preferencia.nombrePreferencia}" th:value="${preferencia.nombrePreferencia}"/></td>
+					<td><input type="text" th:field="${preferencia.descripcionPreferencia}" th:value="${preferencia.descripcionPreferencia}"/></td>
+				<tr align="center">
+					<td colspan="3" ><input class="btn btn-primary" type="submit" value="GUARDAR"></td>
+				</tr>
+
+			</form>
+		</table>
+
+	</div>
+
+	
+	<!-- /.container -->
+	<!-- 
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	 -->
+</body>
+</html>
