@@ -6,14 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.component';
-import { GetUsuarioComponent } from './components/get-usuario/get-usuario.component';
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
 @NgModule({
   declarations: [
     AppComponent,
     AltaUsuarioComponent,
-    GetUsuarioComponent,
     ListarUsuarioComponent
   ],
   imports: [

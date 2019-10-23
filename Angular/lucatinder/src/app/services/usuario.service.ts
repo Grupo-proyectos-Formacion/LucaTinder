@@ -21,7 +21,7 @@ export class UsuarioService {
   }
 
   public getUsuario() {
-    return this.http.get<Usuario>(myGlobals.url+"/get/sesion");
+    return this.http.get<Usuario>(myGlobals.url+"/get/session");
   } 
 
 }
