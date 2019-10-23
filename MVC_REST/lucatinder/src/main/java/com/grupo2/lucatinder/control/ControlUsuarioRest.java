@@ -84,7 +84,8 @@ public class ControlUsuarioRest {
 		if(usuario != null) {
             this.actualUsuario = usuario.getIdUsuario();
         }
-        return usuario;
+		this.usuarioSesion=usuario;
+		return usuario;
 		}
 	/**
 	 * 
@@ -110,6 +111,7 @@ public class ControlUsuarioRest {
 		logger.info("--------Listando usuarios en Rest");
 		return this.usuarioSesion;
 	}
+	
 	
 	@GetMapping("/listar/usuarios/rest")
 	public List<Usuario> listar(){

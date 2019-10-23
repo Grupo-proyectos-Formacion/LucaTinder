@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.component';
-import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
-
+import { GetUsuarioComponent } from './components/get-usuario/get-usuario.component';
+import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
+import {UsuarioService} from './services/usuario.service';
 @NgModule({
   declarations: [
     AppComponent,
     AltaUsuarioComponent,
-    ModificarUsuarioComponent
+    GetUsuarioComponent,
+    ListarUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,7 @@ import { ModificarUsuarioComponent } from './components/modificar-usuario/modifi
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
