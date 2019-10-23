@@ -1,4 +1,5 @@
-<form [formGroup]="form">
+<div class="col col-md-6">
+<form [formGroup]="form" novalidate>
     <div class="form-group">
         <label>Nombre:</label>
         <input class="form-control" formControlName="nombreUsuario" type="text">
@@ -11,7 +12,7 @@
     
     <div class="form-group">
         <label>Edad:</label>
-        <input class="form-control" formControlName="edadUsuario" type="text">
+        <input class="form-control" formControlName="edadUsuario" type="number" min="18">
     </div>
 
     <div class="form-group">
@@ -19,15 +20,25 @@
         <input class="form-control" formControlName="ciudadUsuario" type="text">
     </div>
 
+    <div class="form-group">
+        <label>Sexo:</label>
+        <select formControlName="sexoUsuario" >
+          <option [ngValue]="false">Hombre</option>
+          <option [ngValue]="true">Mujer</option>
+        </select>
+    </div>
 
     <div class="form-group">
-        <label>Ciudad:</label>
+        <label>Url imagen:</label>
         <input class="form-control" formControlName="imagenUsuario" type="text">
     </div>
 
     <button type="submit"
             [disabled]="form.pristine || form.invalid" 
-            class="btn btn-success">
+            class="btn btn-success"
+            (click)="altaUsuario(form)"
+            >
         Guardar
     </button>
 </form>
+</div>

@@ -22,16 +22,39 @@ export class AltaUsuarioComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       //name: ['', Validators.required],
-      nombreUsuario: ['', Validators.required],
+      idUsuario:null,
+      nombreUsuario: ["", Validators.required],
       descripcionUsuario : "",
-      edadUsuario: "",
+      edadUsuario:"",
       ciudadUsuario: "",
-      imagenUsuario: "",
+      sexoUsuario:Boolean,
+      imagenUsuario:"",
     });
   }
 
-  /*altaUsuario(){
-    this.service.crearUsuario(this.user);
-  }*/
+  get idUsuario(){return this.form.get('idUsuario');}
+  get nombreUsuario(){return this.form.get('nombreUsuario');}
+  get descripcionUsuario(){return this.form.get('descripcionUsuario');}
+  get edadUsuario(){return this.form.get('edadUsuario');}
+  get ciudadUsuario(){return this.form.get('ciudadUsuario');}
+  get sexoUsuario(){return this.form.get('sexoUsuario');}
+  get imagenUsuario(){return this.form.get('imagenUsuario');}
+
+  altaUsuario(myForm:FormGroup){
+    this.user = new Usuario(
+      myForm.get('nombreUsuario').value,
+      myForm.get('idUsuario').value,
+      myForm.get('descripcionUsuario').value,
+      myForm.get('edadUsuario').value,
+      myForm.get('ciudadUsuario').value,
+      myForm.get('sexoUsuario').value,
+      myForm.get('imagenUsuario').value
+    );
+    this.service.crearUsuario(this.user).subscribe(
+      (data:Usuario)=>{
+        console.log(data);
+      }
+    );
+  }
 
 }
