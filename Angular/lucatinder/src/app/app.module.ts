@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.component';
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
+import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
 @NgModule({
   declarations: [
     AppComponent,
     AltaUsuarioComponent,
-    ListarUsuarioComponent
+    ListarUsuarioComponent,
+    ListarPerfilesComponent
   ],
   imports: [
     BrowserModule,
