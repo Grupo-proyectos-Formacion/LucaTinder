@@ -13,9 +13,8 @@ const httpOptions = {
 export class UsuarioService {
 
   constructor(private http:HttpClient) { 
-  
   }
-
+  
   public crearUsuario(usuario) {
     console.log(usuario);
     return this.http.post<Usuario>(myGlobals.url+"/crear/usuario/rest", usuario, httpOptions);

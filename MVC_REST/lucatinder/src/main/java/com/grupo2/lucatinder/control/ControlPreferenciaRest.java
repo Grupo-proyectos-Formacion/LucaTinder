@@ -31,7 +31,7 @@ public class ControlPreferenciaRest {
 				.toUri();
 		return ResponseEntity.created(location).build();		
 	}
-	*/
+	
 	
 }
 */
