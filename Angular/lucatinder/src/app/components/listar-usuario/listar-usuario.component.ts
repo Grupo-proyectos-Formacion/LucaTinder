@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/Usuario';
+import { LikeDislikeComponent } from '../like-dislike/like-dislike.component'
 
 
 @Component({
@@ -12,7 +13,8 @@ export class ListarUsuarioComponent implements OnInit {
 
   usuario: Usuario;
   constructor(private service:UsuarioService) { 
-    this.service.getSesion().subscribe(
+    
+    this.service.getUsuario().subscribe(
       data => {
         this.usuario = data;
         console.log(data);

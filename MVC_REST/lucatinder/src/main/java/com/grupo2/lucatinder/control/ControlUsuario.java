@@ -1,5 +1,7 @@
 package com.grupo2.lucatinder.control;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -176,7 +178,16 @@ public class ControlUsuario {
 	public String tratarDarPreferencia(@RequestParam String idPreferencia,Model model) {
 		Preferencia preferencia = servicePreferencia.getById(Integer.parseInt(idPreferencia));
 		//this.usuarioSesion.addPreferenciaUsuario(preferencia);
-		this.usuarioSesion.addPreferenciaUsuario(preferencia);
+		List<Preferencia> preferencias = null;
+		/*if(this.usuarioSesion.getPreferenciaUsuario() == null) {
+			preferencias = new ArrayList<>();
+			preferencias.add(preferencia);
+			this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		} else this.usuarioSesion.getPreferenciaUsuario().add(preferencia);*/
+		preferencias = new ArrayList<>();
+		preferencias.add(preferencia);
+		this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		//this.usuarioSesion.setPreferenciaUsuario(preferencias);
 		System.out.println("LISTA DE PREFERENCIAS DE USUARIO: "+this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/usuario";

@@ -11,7 +11,8 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
-import { ListarMatchesComponent } from './components/listar-matches/listar-matches.component';
+import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +20,14 @@ import { ListarMatchesComponent } from './components/listar-matches/listar-match
     ModificarUsuarioComponent,
     LikeDislikeComponent,
     ListarUsuarioComponent,
-    ListarMatchesComponent,
+    ListarPerfilesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

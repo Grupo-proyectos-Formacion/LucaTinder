@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -49,11 +50,12 @@ public class Usuario {
 	@Column(name="imagen_usuario")
 	private String imagenUsuario;
 	
-	@OneToMany
+	@ManyToMany
 	(fetch= FetchType.EAGER,   cascade = CascadeType.ALL)
 	@JoinTable(name="usuario_preferencia", joinColumns={@JoinColumn(name ="id_usuario", referencedColumnName ="id_usuario")},
 	inverseJoinColumns={@JoinColumn(name ="id_preferencia", referencedColumnName ="id_preferencia")})
-	//@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	//@OneToMany(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Preferencia> preferenciaUsuario;
 	
 	
