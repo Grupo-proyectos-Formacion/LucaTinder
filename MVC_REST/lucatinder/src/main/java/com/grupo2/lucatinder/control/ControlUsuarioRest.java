@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioUsuario;
+import com.grupo2.lucatinder.utilidades.Conversor;
 
 
 
@@ -132,10 +133,35 @@ public class ControlUsuarioRest {
 	}
 	
 	
-	@PostMapping("/tratarResultadoMatch/{id}")
-	public void tratarResultadoMatch(@RequestBody Usuario usuario, @PathVariable int id) {			
+	/*@PostMapping("/tratar/resultadoMatch/")
+	public void tratarResultadoMatch (
+			@RequestBody String resultado, 
+			@PathVariable String idTronista
+			) throws JsonMappingException, JsonProcessingException {			
 		logger.info("--------Tratando resultados en Rest verificar-----------");
-		service.tratarResultadoMatch(true,this.usuarioSesion, usuario);
+		String json = resultado;
+		JsonNode jsonNode = objectMapper.readTree(json);
+		String js = jsonNode.get("resultado").asText();				
+		logger.info(js);
+		logger.info("RESULTADO TEXT : "+js);
+		Boolean resultadoConvertido = Conversor.convertirStringABoolean(js);
+		
+		service.tratarResultadoMatch(resultadoConvertido,this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
+	}*/
+	@PostMapping("/tratar/resultadoMatch/rest")
+	public void tratarResultadoMatch (
+			@RequestBody String resultado
+			) throws JsonMappingException, JsonProcessingException {			
+		logger.info("--------Tratando resultados Match en Rest verificar-----------");
+		String json = resultado;
+		JsonNode jsonNode = objectMapper.readTree(json);
+		String jsResultado = jsonNode.get("resultado").asText();
+		String jsTronista = jsonNode.get("idTronista").asText();
+
+		logger.info("RESULTADO TEXT : "+jsResultado);
+		Boolean resultadoConvertido = Conversor.convertirStringABoolean(jsResultado);
+		
+		service.tratarResultadoMatch(resultadoConvertido,this.usuarioSesion, service.getById(Integer.parseInt(jsTronista)));
 	}
 	/**
 	 * Eliminar Usuario 
