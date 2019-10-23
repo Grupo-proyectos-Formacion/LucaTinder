@@ -106,7 +106,7 @@ public class ControlUsuarioRest {
 		return ResponseEntity.created(location).build();		
 	}
 		 
-	@GetMapping("/get/sesion")
+	@GetMapping("/get/session")
 	public Usuario getSesion(){
 		logger.info("--------Listando usuarios en Rest");
 		return this.usuarioSesion;

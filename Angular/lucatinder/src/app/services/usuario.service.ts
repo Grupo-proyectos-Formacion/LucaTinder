@@ -14,14 +14,12 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) { 
   }
-  
+
   public crearUsuario(usuario) {
     console.log(usuario);
     return this.http.post<Usuario>(myGlobals.url+"/crear/usuario/rest", usuario, httpOptions);
   }
-
-  public getUsuario() {
-    return this.http.get<Usuario>(myGlobals.url+"/get/session");
-  } 
-
+  public getSesion(){
+    return this.http.get<Usuario>(myGlobals.url+"/get/sesion")
+  }
 }
