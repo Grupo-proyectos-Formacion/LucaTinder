@@ -28,4 +28,10 @@ export class UsuarioService {
     console.log(urlendpoint);
     return this.http.delete(urlendpoint);
   }
+
+  public getUsuario(/*idUsuario*/) {
+    return this.http.get<Usuario>(myGlobals.url+"/get/session");
+  } 
 }
+
+

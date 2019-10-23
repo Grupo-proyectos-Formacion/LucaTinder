@@ -9,12 +9,15 @@ import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.com
 import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
 import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
 
+import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
+import {UsuarioService} from './services/usuario.service';
 @NgModule({
   declarations: [
     AppComponent,
     AltaUsuarioComponent,
     ModificarUsuarioComponent,
     LikeDislikeComponent,
+    ListarUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

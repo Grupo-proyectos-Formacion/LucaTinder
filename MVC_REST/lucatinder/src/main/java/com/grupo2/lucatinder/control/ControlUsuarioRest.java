@@ -112,6 +112,7 @@ public class ControlUsuarioRest {
 		return this.usuarioSesion;
 	}
 	
+	
 	@GetMapping("/listar/usuarios/rest")
 	public List<Usuario> listar(){
 		logger.info("--------Listando usuarios en Rest");
