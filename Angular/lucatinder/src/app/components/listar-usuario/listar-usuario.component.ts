@@ -12,7 +12,7 @@ export class ListarUsuarioComponent implements OnInit {
 
   usuario: Usuario;
   constructor(private service:UsuarioService) { 
-    this.service.getUsuario().subscribe(
+    this.service.getSesion().subscribe(
       data => {
         this.usuario = data;
         console.log(data);
