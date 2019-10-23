@@ -32,6 +32,10 @@ export class UsuarioService {
   public getUsuario(/*idUsuario*/) {
     return this.http.get<Usuario>(myGlobals.url+"/get/session");
   } 
+
+  public getPerfiles(idUsuario) {
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
+  } 
 }
 
 
