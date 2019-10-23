@@ -6,15 +6,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AltaUsuarioComponent } from './components/alta-usuario/alta-usuario.component';
+import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
+import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
+
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
-import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
+import { ListarMatchesComponent } from './components/listar-matches/listar-matches.component';
 @NgModule({
   declarations: [
     AppComponent,
     AltaUsuarioComponent,
+    ModificarUsuarioComponent,
+    LikeDislikeComponent,
     ListarUsuarioComponent,
-    ListarPerfilesComponent
+    ListarMatchesComponent,
   ],
   imports: [
     BrowserModule,

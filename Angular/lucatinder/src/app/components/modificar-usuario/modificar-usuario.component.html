@@ -1,4 +1,4 @@
-<div class="col col-md-6">
+<div  class="col col-md-6">
     <form [formGroup]="form" novalidate>
         <div class="form-group">
             <label>Nombre:</label>
@@ -36,9 +36,18 @@
         <button type="submit"
                 [disabled]="form.pristine || form.invalid" 
                 class="btn btn-success"
-                (click)="altaUsuario(form)"
+                (click)="modificarUsuario(form)"
                 >
             Guardar
         </button>
+       
     </form>
+    <button type="submit"
+    class="btn btn-danger"
+    (click)="eliminarUsuario()"
+    >
+¡DAR DE BAJA PERFIL!
+</button>
+
+    
     </div>

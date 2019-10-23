@@ -84,8 +84,8 @@ public class ControlUsuarioRest {
 		if(usuario != null) {
             this.actualUsuario = usuario.getIdUsuario();
         }
-		this.usuarioSesion=usuario;
-		return usuario;
+		this.usuarioSesion = usuario;
+        return usuario;
 		}
 	/**
 	 * 
@@ -144,6 +144,7 @@ public class ControlUsuarioRest {
     void deleteById(@PathVariable int id){
         this.service.eliminarUsuario(id);
         logger.info("-------Eliminando Usuario en Rest");
+        this.usuarioSesion = null;
 	} 
 	
 	@PutMapping("/modificar/usuario")
