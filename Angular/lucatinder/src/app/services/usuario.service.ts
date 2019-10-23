@@ -24,7 +24,6 @@ export class UsuarioService {
     return this.http.get<Usuario>(myGlobals.url+"/get/session")
   }
   public deleteUsuario(idUsuario){
-    
     var urlendpoint = myGlobals.url+"/eliminar/usuario/rest/"+idUsuario;
     console.log(urlendpoint);
     return this.http.delete(urlendpoint);
@@ -35,8 +34,10 @@ export class UsuarioService {
   public postResultadoInteraccion(interaccion) {
     console.log(interaccion);
     return this.http.post(myGlobals.url+"/tratar/resultadoMatch/rest", interaccion, httpOptions);
+  }
+  public getPerfiles(idUsuario) {
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
   } 
-
 }
 
 

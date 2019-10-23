@@ -11,6 +11,7 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
+import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +19,13 @@ import {UsuarioService} from './services/usuario.service';
     ModificarUsuarioComponent,
     LikeDislikeComponent,
     ListarUsuarioComponent,
+    ListarPerfilesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
