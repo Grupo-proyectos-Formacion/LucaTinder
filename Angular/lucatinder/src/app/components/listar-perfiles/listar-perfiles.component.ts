@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/Usuario';
 
 
 @Component({
@@ -8,11 +8,21 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './listar-perfiles.component.html',
   styleUrls: ['./listar-perfiles.component.css']
 })
-export class ListarPerfilesComponent implements OnInit {
+export class ListarUsuarioComponent implements OnInit {
 
-  constructor(private usuarioService: UsuarioService) { }
+  usuario: Usuario[];
+  constructor(private service:UsuarioService) { 
+    this.service.getSesion().subscribe(
+      data => {
+        this.usuario = data;
+        console.log(data);
+      },
+      error => console.log(error)
+    )
+  }
 
   ngOnInit() {
   }
 
 }
+
