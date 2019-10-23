@@ -20,6 +20,12 @@ export class UsuarioService {
     return this.http.post<Usuario>(myGlobals.url+"/crear/usuario/rest", usuario, httpOptions);
   }
   public getSesion(){
-    return this.http.get<Usuario>(myGlobals.url+"/get/sesion")
+    return this.http.get<Usuario>(myGlobals.url+"/get/session")
+  }
+  public deleteUsuario(idUsuario){
+    
+    var urlendpoint = myGlobals.url+"/eliminar/usuario/rest/"+idUsuario;
+    console.log(urlendpoint);
+    return this.http.delete(urlendpoint);
   }
 }

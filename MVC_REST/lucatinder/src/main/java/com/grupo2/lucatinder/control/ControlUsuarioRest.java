@@ -143,6 +143,7 @@ public class ControlUsuarioRest {
     void deleteById(@PathVariable int id){
         this.service.eliminarUsuario(id);
         logger.info("-------Eliminando Usuario en Rest");
+        this.usuarioSesion = null;
 	} 
 	
 	@PutMapping("/modificar/usuario")
