@@ -19,4 +19,9 @@ export class UsuarioService {
     console.log(usuario);
     return this.http.post<Usuario>(myGlobals.url+"/crear/usuario/rest", usuario, httpOptions);
   }
+
+  public getUsuario() {
+    return this.http.get<Usuario>(myGlobals.url+"/get/sesion");
+  } 
+
 }
