@@ -1,0 +1,17 @@
+<nav th:fragment="navBarUsuario" class=" navbar navbar-dark bg-dark">
+<div class="container">
+  <a class="navbar-brand text-white" th:href="@{/}">LUCA TINDER</a>
+  <div id="navbarNav">
+    <ul class="ml-auto navbar-nav men">
+      <li class="nav-item pr-4">
+        <a class="text-white nav-link " th:href="@{'/listar/posiblesMatches/' + ${usuario.idUsuario}}">Buscar match</a>
+      </li>
+      <li class="nav-item pr-4">
+        <a class="text-white nav-link" th:href="@{/listar/matches}">Ver matches</a>
+      </li>
+     </ul>
+  </div>
+ </div>
+</nav>     
+      
+      

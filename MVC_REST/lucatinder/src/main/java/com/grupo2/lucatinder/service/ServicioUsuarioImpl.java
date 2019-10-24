@@ -93,7 +93,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	}
 
 	@Override
-	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
 		return daoUsuario.pedirMatchesConfirmados(usuario);
 	}
 

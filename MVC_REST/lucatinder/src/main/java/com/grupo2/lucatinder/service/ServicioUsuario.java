@@ -13,6 +13,6 @@ public interface ServicioUsuario extends ServicioGenerico<Usuario> {
 	public Usuario getByName(String nombreUsario);
 	public Usuario modificarUsuario(Usuario objeto);
 	public void eliminarUsuario(int id);
-	Set<Usuario> pedirMatchesConfirmados(Usuario usuario);
+	List<Usuario> pedirMatchesConfirmados(Usuario usuario);
 }
 		

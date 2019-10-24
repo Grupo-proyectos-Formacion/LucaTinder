@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreferenciaComponent } from './preferencia.component';
+import { SwipeUsuariosComponent } from './swipe-usuarios.component';
 
-describe('PreferenciaComponent', () => {
-  let component: PreferenciaComponent;
-  let fixture: ComponentFixture<PreferenciaComponent>;
+describe('SwipeUsuariosComponent', () => {
+  let component: SwipeUsuariosComponent;
+  let fixture: ComponentFixture<SwipeUsuariosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreferenciaComponent ]
+      declarations: [ SwipeUsuariosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreferenciaComponent);
+    fixture = TestBed.createComponent(SwipeUsuariosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

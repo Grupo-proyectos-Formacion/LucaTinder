@@ -12,8 +12,7 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
-import { PreferenciaComponent } from './components/preferencia/preferencia.component';
-
+import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +21,7 @@ import { PreferenciaComponent } from './components/preferencia/preferencia.compo
     LikeDislikeComponent,
     ListarUsuarioComponent,
     ListarPerfilesComponent,
-    PreferenciaComponent,
-    
+    SwipeUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +29,7 @@ import { PreferenciaComponent } from './components/preferencia/preferencia.compo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UsuarioService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

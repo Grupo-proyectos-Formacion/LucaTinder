@@ -109,7 +109,7 @@ public class ControlUsuarioRest {
 		return ResponseEntity.created(location).build();		
 	}
 		 
-	@GetMapping("/get/session")
+	@GetMapping("/get/sesion")
 	public Usuario getSesion(){
 		logger.info("--------Listando usuarios en Rest");
 		return this.usuarioSesion;
@@ -131,25 +131,10 @@ public class ControlUsuarioRest {
 	@GetMapping("/listar/pedirMatchesConfirmados/rest/")
 	public List<Usuario> pedirMatchesConfirmados(/*@PathVariable int id*/){
 		logger.info("--------Listando  Matches Confirmados  en Rest---------- ");
-		return service.pedirMatchesConfirmados(service.getById(id));
+		return service.pedirMatchesConfirmados(this.usuarioSesion);
+		//return service.pedirMatchesConfirmados(service.getById(id));
 	}
 	
-	
-	/*@PostMapping("/tratar/resultadoMatch/")
-	public void tratarResultadoMatch (
-			@RequestBody String resultado, 
-			@PathVariable String idTronista
-			) throws JsonMappingException, JsonProcessingException {			
-		logger.info("--------Tratando resultados en Rest verificar-----------");
-		String json = resultado;
-		JsonNode jsonNode = objectMapper.readTree(json);
-		String js = jsonNode.get("resultado").asText();				
-		logger.info(js);
-		logger.info("RESULTADO TEXT : "+js);
-		Boolean resultadoConvertido = Conversor.convertirStringABoolean(js);
-		
-		service.tratarResultadoMatch(resultadoConvertido,this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
-	}*/
 	@PostMapping("/tratar/resultadoMatch/rest")
 	public void tratarResultadoMatch (
 			@RequestBody String resultado

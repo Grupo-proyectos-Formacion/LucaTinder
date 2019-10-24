@@ -13,7 +13,7 @@
               <li class="list-group-item">{{usuario.sexoUsuario}}</li>
               <li class="list-group-item">{{usuario.edadUsuario}}</li>
             </ul>
-            <app-like-dislike idTronista={{usuario.idUsuario}}></app-like-dislike>
+            <app-like-dislike idTronista={{usuario.idUsuario}} (click)="listarUsuario()"></app-like-dislike>
          </div>
       </span>
     </div>

@@ -11,6 +11,7 @@ export class SwipeUsuariosComponent implements OnInit {
   usuarioSesion:Usuario;
   matches: Usuario[];
   usuario:Usuario;
+  iterador:number=0;
   constructor(private service:UsuarioService) {
   }
   async ngOnInit() {
@@ -29,12 +30,15 @@ export class SwipeUsuariosComponent implements OnInit {
       data=>{
         this.matches = data;
         console.log(this.matches);
-        this.usuario=this.matches[0];
+        this.listarUsuario();
       }
     );
   }
 
-  listarUsuarioActual(){
+  listarUsuario(){
+    this.usuario=this.matches[this.iterador];
+    this.iterador++;
+    this.iterador %= this.matches.length;
   }
 
 

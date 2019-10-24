@@ -13,17 +13,16 @@ export class ListarUsuarioComponent implements OnInit {
 
   usuario: Usuario;
   constructor(private service:UsuarioService) { 
-    
-    this.service.getUsuario().subscribe(
+  }
+
+  async ngOnInit() {
+    this.service.getSesion().subscribe(
       data => {
         this.usuario = data;
         console.log(data);
       },
       error => console.log(error)
     )
-  }
-
-  ngOnInit() {
   }
 
 }

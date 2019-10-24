@@ -1,0 +1,16 @@
+#likeado{
+    color:green;
+    border:0; 
+    background-color:rgba(255,255,255,1.0); 
+    cursor:pointer;
+    height: 2em;
+    width: 2em;
+}
+#deslikeado{
+    color:red;
+    border:0; 
+    background-color:rgba(255,255,255,1.0);
+    cursor:pointer;
+    height: 2em;
+    width: 2em;
+}
