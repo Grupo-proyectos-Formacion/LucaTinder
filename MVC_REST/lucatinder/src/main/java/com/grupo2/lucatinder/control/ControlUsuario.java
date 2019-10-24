@@ -1,6 +1,7 @@
 package com.grupo2.lucatinder.control;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,20 +22,23 @@ public class ControlUsuario {
 	@Autowired
 	private ServicioUsuario service;
 	
-
 	private Usuario usuarioSesion;
 	
 	@GetMapping("/")
-	public String login(Model model){
+	public String login(Model model){ 
 		List<Usuario> usuarios = service.listar();
 		if(usuarios.size()<20) {
 			service.poblar();
 		} else System.out.println("Hay suficientes usuarios en la base de datos");
 		
+		System.out.println(System.getProperty("file.encoding"));
+		
 		if(usuarioSesion==null) {
 			String usuario="";
+			usuarioSesion = new Usuario();
+			model.addAttribute("usuario2", usuarioSesion);
 			model.addAttribute("usuario",usuario);
-			return "usuarios/login";
+			return "usuarios/index";
 		}
 		else {
 			model.addAttribute("usuario", this.usuarioSesion);
@@ -42,23 +46,17 @@ public class ControlUsuario {
 		}
 	}
 	
+	@GetMapping("/login")
+	public String tratarLoginGet(Model model){
+		return "redirect:/";
+	}
+	
 	@PostMapping("/login")
 	public String tratarLogin(@RequestParam String usuario, Model model){
-		System.out.println("NOMBRE DEL USUARIO: "+usuario);
 		this.usuarioSesion = service.getByName(usuario);
 		model.addAttribute("usuario",this.usuarioSesion);
 		return "usuarios/usuario";
 	}
-	/*
-	@GetMapping("/")
-	public String index(Model model){
-		List<Usuario> usuarios = service.listar();
-		if(usuarios.size()<20) {
-			service.poblar();
-		} else System.out.println("Hay suficientes usuarios en la base de datos");
-		model.addAttribute("usuario", new Usuario());
-		return "usuarios/crearUsuario";
-	}*/
 	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
@@ -68,10 +66,11 @@ public class ControlUsuario {
 	
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario, Model model){
-		System.out.println(usuario);
-		 model.addAttribute("usuario" , service.crear(usuario));
+		
+		model.addAttribute("usuario" , service.crear(usuario));
+		this.usuarioSesion = usuario;
 		return "/usuarios/usuario";
-	}	
+	}
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
@@ -86,6 +85,7 @@ public class ControlUsuario {
 		String eleccion ="";
 		model.addAttribute("tronista",usuario);
 		model.addAttribute("eleccion",eleccion);
+		System.out.println(usuario.getImagenUsuario());
 		return "usuarios/perfilMatch";
 	}
 	@PostMapping("/eleccion")
@@ -106,15 +106,40 @@ public class ControlUsuario {
 		//System.out.println(tronista);
 		System.out.println(model);
 		System.out.println(eleccion + "Esta ha sido la eleccion");
+		
 		return "redirect:/";
 	}
+	
+	
+	/* ESTA ES UNA MEJORA DEL METODO DE ARRIBA, PERO AIGUE SIN FUNCIONAR*
+	 	@PostMapping("/eleccion")
+	public String trataResultadoMatch(
+			@RequestParam(value = "id", required = false) String idTronista, 
+			@RequestParam(value = "eleccion", required = false) String eleccion,
+			Model model) {
+		
+		if(eleccion.equals("match")) { 
+			System.out.println("Te mola?, ha. " );
+			service.tratarResultadoMatch(true, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
+			}
+		else if(eleccion.equals("rechazo")) { 
+			System.out.println("No te mola huh?" ); 
+			service.tratarResultadoMatch(false, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
+			}
+		
+	
+		System.out.println(model);
+		System.out.println(eleccion + "Esta ha sido la eleccion");
+		int idTronistaActual = Integer.parseInt(idTronista);
+		
+		return "redirect:/listar/tronista/"+(idTronistaActual++);
+	}
+	 */
 	
 	@GetMapping("/confirmaEliminaUsuario")
 	public String confirmaEliminaUsuario(Model model) {
 		model.addAttribute("usuario", this.usuarioSesion);
-		System.out.println(this.usuarioSesion.getIdUsuario());
 		return "usuarios/confirmarEliminaUsuario";
-	
 	}
 	
 	@GetMapping("/eliminarUsuario")
@@ -128,6 +153,21 @@ public class ControlUsuario {
 			System.out.println("vacio");
 		}
 		return "redirect:/";
+	}
+	
+	@GetMapping("/editar")
+	public String editUser(Model model) {
+		model.addAttribute("usuario", this.usuarioSesion);
+		return "/usuarios/crearUsuario";
+	}
+	
+	@GetMapping("/listar/matches")
+	public String listarMatchesConfirmados(Model model) {
+		Set<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
+		System.out.println(matches);
+		model.addAttribute("usuarios", matches);
+		return "usuarios/lista";
 	}
 	
 }

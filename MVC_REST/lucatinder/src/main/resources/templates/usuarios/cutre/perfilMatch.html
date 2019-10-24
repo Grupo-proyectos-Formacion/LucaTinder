@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
+</head>
+<body>
+	<div th:replace="usuarios/header :: navBar"></div>
+
+	<h2 style="text-align: center">Perfil Usuario</h2>
+	<div class="row">
+		<div class="card offset-md-2 col-md-8 mt-5 p-2">
+			<div class="row">
+				<div class="col col-md-6">
+					<img th:src="${tronista.imagenUsuario}" alt="Foto muy sonriente"
+						style="height: 90%">
+				</div>
+				<div class="col col-md-6">
+					<h1 th:text="${tronista.nombreUsuario}"></h1>
+					<h2 th:text="${tronista.edadUsuario}"></h2>
+					<h2 th:text="${tronista.ciudadUsuario}"></h2>
+					<a><i th:if="${tronista.sexoUsuario}" class="fa fa-female"></i></a>
+					<a><i th:if="${!tronista.sexoUsuario}" class="fa fa-male"></i></a>
+					<h2 th:text="${tronista.descripcionUsuario}"></h2>
+
+				</div>
+					<div class="col col-12 d-flex justify-content-center p-2">
+						<form th:object="${eleccion}" th:action="@{/eleccion}"
+							method="POST">
+							<!-- <input type="hidden" th:name="id" th:value="${tronista.idUsuario}">
+					<input type="image" src="@{..\..\static\images\like.png}" th:value="match" />
+					<input type="image" th:src="@{..\..\static\images\dislike.png}" th:value="rechazo" />
+					 -->
+							<input type="hidden" th:name="id"
+								th:value="${tronista.idUsuario}">
+
+							<button class="btn btn-success" type="submit" th:name="eleccion"
+								th:value="match">Me mola</button>
+
+
+							<button class="btn btn-danger" type="submit" th:name="eleccion"
+								th:value="rechazo">No me mola</button>
+
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
