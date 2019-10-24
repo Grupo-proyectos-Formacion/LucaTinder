@@ -36,10 +36,10 @@ export class UsuarioService {
     return this.http.post(myGlobals.url+"/tratar/resultadoMatch/rest", interaccion, httpOptions);
   }
   public getPerfiles(idUsuario) {
-    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest");
   } 
-  public getMatches(idUsuario){
-    return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/"+idUsuario);
+  public getMatches(){
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/");
   }
 }
 
