@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.model.Usuario;
+import com.grupo2.lucatinder.service.ServicioPreferencia;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 import com.grupo2.lucatinder.utilidades.Conversor;
 
@@ -49,7 +50,11 @@ public class ControlUsuarioRest {
 	@Autowired
 	private ServicioUsuario service;
 	
-	private int actualUsuario;
+	@Autowired
+	private ServicioPreferencia servicePreferencia;
+	
+	public  Usuario usuarioSesion;
+	
 	
 	ObjectMapper objectMapper = new ObjectMapper();
 
@@ -64,7 +69,7 @@ public class ControlUsuarioRest {
 		}
 	}
 	
-	private Usuario usuarioSesion;
+	
 	
 	/**
 	 * Login Usuario  
@@ -85,9 +90,9 @@ public class ControlUsuarioRest {
 		logger.info(nombre2);	
 		Usuario  usuario= service.getByName(nombre2);
 		if(usuario != null) {
-            this.actualUsuario = usuario.getIdUsuario();
+			this.usuarioSesion = usuario;
         }
-		this.usuarioSesion = usuario;
+		
         return usuario;
 		}
 	/**
@@ -106,6 +111,7 @@ public class ControlUsuarioRest {
 				.buildAndExpand(result.getIdUsuario())
 				.toUri();
 		logger.info("-- -----Creando Usuario");
+		this.usuarioSesion = result;
 		return ResponseEntity.created(location).build();		
 	}
 		 
@@ -181,6 +187,7 @@ public class ControlUsuarioRest {
 		this.usuarioSesion.setPreferenciaUsuario(preferencias);
 		service.crear(this.usuarioSesion);
 	}
+	
 	
 	
 }

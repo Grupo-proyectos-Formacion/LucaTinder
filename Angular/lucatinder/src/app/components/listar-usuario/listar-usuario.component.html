@@ -12,6 +12,11 @@
       <li class="list-group-item">{{usuario.edadUsuario}}</li>
     </ul> 
     <div class="card-body">
+    <ul>
+      <p *ngFor="let pref of preferencias"> Me gusta {{pref.nombrePreferencia}} por que {{pref.descripcionPreferencia}} </p>
+    </ul>
+    </div>
+    <div class="card-body">
         <a style="color:blue" routerLink="/Modificar" class=" card-link fas fa-edit fa-2x" > </a> 
     </div>
   </div>

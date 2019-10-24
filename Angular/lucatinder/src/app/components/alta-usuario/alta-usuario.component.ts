@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service'
 import { Usuario } from '../../models/usuario'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-usuario',
@@ -11,7 +12,10 @@ import { Usuario } from '../../models/usuario'
 export class AltaUsuarioComponent implements OnInit {
   form:FormGroup;
   user:Usuario;
-  constructor(private service:UsuarioService, private fb:FormBuilder) {
+  constructor(
+    private service:UsuarioService, 
+    private fb:FormBuilder,
+    private router:Router,) {
     this.createForm();
    }
   ngOnInit() {
@@ -53,6 +57,7 @@ export class AltaUsuarioComponent implements OnInit {
     this.service.crearUsuario(this.user).subscribe(
       (data:Usuario)=>{
         console.log(data);
+        this.router.navigate(['/verPerfil']);
       }
     );
   }

@@ -15,9 +15,7 @@ export class ListarPerfilesComponent implements OnInit {
       data => {
         this.idUsuarioActual = data.idUsuario;
         console.log(data);
-
-        /*****************************************/
-        this.poblarPosiblesMatches();
+        this.poblarMatches();
       }
     )
   }
@@ -26,8 +24,8 @@ export class ListarPerfilesComponent implements OnInit {
     console.log(this.idUsuarioActual);
   }
 
-  poblarPosiblesMatches(){
-    this.service.getMatches(this.idUsuarioActual).subscribe(
+  poblarMatches(){
+    this.service.getMatches().subscribe(
       data => {
         this.usuarios = data;
         console.log(data);

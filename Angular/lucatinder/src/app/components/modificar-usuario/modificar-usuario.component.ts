@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/Usuario';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Preferencia } from 'src/app/models/preferencia';
 
 @Component({
   selector: 'app-modificar-usuario',
@@ -11,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ModificarUsuarioComponent implements OnInit {
   user: Usuario;
   form:FormGroup;
+  preferenciasDisponibles:Preferencia[];
 
   constructor(private service:UsuarioService, private fb:FormBuilder) {
     
@@ -24,6 +26,7 @@ export class ModificarUsuarioComponent implements OnInit {
         console.log("HOLA TENEMOS DATOS")
         console.log(data);
         this.user = data;
+        this.poblarPreferenciasDisponibles();
         this.createForm();
       }
     )
@@ -71,5 +74,18 @@ export class ModificarUsuarioComponent implements OnInit {
     console.log("ELIMINANDO USUARIO");
     this.service.deleteUsuario(this.user.idUsuario).subscribe();
   }
+
+  poblarPreferenciasDisponibles(){
+    this.service.getAllPreferencias().subscribe(
+      (data:Preferencia[])=>{
+        this.preferenciasDisponibles=data;
+      }
+      )
+    }
+
+  addPreferencia(index:number){
+    this.service.addPreferencia(this.preferenciasDisponibles[index]).subscribe()
+  }
+  
   
 }

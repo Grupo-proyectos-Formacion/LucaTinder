@@ -6,8 +6,10 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
 import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  {path:'', component:LoginComponent},
   {path:'Alta', component:AltaUsuarioComponent} ,
   {path:'Modificar',component:ModificarUsuarioComponent}, 
   {path:'Elegir',component:LikeDislikeComponent},

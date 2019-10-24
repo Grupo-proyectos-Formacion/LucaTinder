@@ -1,4 +1,4 @@
-<div  class="col col-md-6">
+<div  class="col">
     <form [formGroup]="form" novalidate>
         <div class="form-group">
             <label>Nombre:</label>
@@ -31,6 +31,14 @@
             <label>Url imagen:</label>
             <input class="form-control" formControlName="imagenUsuario" type="text">
         </div>
+        <div class="form-group">
+        <input 
+        *ngFor="let pref of preferenciasDisponibles; index as i"
+        class="btn btn-primary"
+        value="{{pref.nombrePreferencia}}"
+        (click)="addPreferencia(i)"
+        >
+    </div>
     
         <button type="submit"
                 [disabled]="form.pristine || form.invalid" 
