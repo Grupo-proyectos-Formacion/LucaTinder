@@ -1,22 +1,30 @@
 <!DOCTYPE HTML>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="usuarios/header :: head">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>LUCA TINDER</title>
+	
+	<link href="..\static\css\bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+	<link href="..\static\css\estilosPersonalizados.css" rel="stylesheet" th:href="@{/css/estilosPersonalizados.css}" />
 </head>
 
 <body>
-	<div th:replace="usuarios/header :: navBar"></div>
+	<div th:replace="usuarios/componentes :: navBarUsuarioSinOpc"></div>
 
-	​
-	<div class="p-3 mb-2 bg-danger text-white">
-		<form th:action="@{/preferencia}" 
-			method="post">
+	<div class="p-3 mb-2 text-white" style="min-height:100vh;">
+		<form th:action="@{/preferencia}" method="post">
 			<table align="center">
 				<tr>
-					<td><select th:name="idPreferencia" class="form-control">
+					<td>
+					<select th:name="idPreferencia" class="form-control">
 							<option th:each="preferencia: ${preferencias}"
 								th:value="${preferencia.idPreferencia}"
-								th:text="${preferencia.nombrePreferencia}"></option>
-					</select></td>
+								th:text="${preferencia.nombrePreferencia}">
+							</option>
+					</select>
+					</td>
 				</tr>
 				<tr>
 
@@ -28,13 +36,11 @@
 			</table>
 		</form>
 	</div>
-
-
-	<!-- /.container -->
-	<!-- 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
-	 -->
+	
+	<div th:replace="usuarios/componentes :: footer"></div> 
+	
+	<script src="..\static\js\jquery-3.4.1.js" th:src="@{/js/jquery-3.4.1.js}"></script>	
+	<script src="https://kit.fontawesome.com/2dfa1c2dc6.js" crossorigin="anonymous"></script>
+	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>	
 </body>
 </html>

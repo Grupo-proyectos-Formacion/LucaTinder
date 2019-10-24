@@ -71,6 +71,7 @@ public class ControlUsuario {
 	@PostMapping("/login")
 	public String tratarLogin(@RequestParam String usuario, Model model){
 		this.usuarioSesion = service.getByName(usuario);
+		model.addAttribute("prefer", this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario",this.usuarioSesion);
 		return "usuarios/usuario";
 	}
@@ -93,7 +94,9 @@ public class ControlUsuario {
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
 		List<Usuario> lista = service.pedirPosiblesMatches(service.getById(id));
+		String eleccion ="";
 		model.addAttribute("usuarios", lista);
+		model.addAttribute("eleccion",eleccion);
 		return "usuarios/lista";
 	}
 	
@@ -116,6 +119,7 @@ public class ControlUsuario {
 		System.out.println(usuario.getImagenUsuario());
 		return "usuarios/perfilMatch";
 	}
+	
 	@PostMapping("/eleccion")
 	public String trataResultadoMatch(
 			@RequestParam(value = "id", required = false) String idTronista, 
@@ -137,32 +141,6 @@ public class ControlUsuario {
 		
 		return "redirect:/";
 	}
-	
-	
-	/* ESTA ES UNA MEJORA DEL METODO DE ARRIBA, PERO AIGUE SIN FUNCIONAR*
-	 	@PostMapping("/eleccion")
-	public String trataResultadoMatch(
-			@RequestParam(value = "id", required = false) String idTronista, 
-			@RequestParam(value = "eleccion", required = false) String eleccion,
-			Model model) {
-		
-		if(eleccion.equals("match")) { 
-			System.out.println("Te mola?, ha. " );
-			service.tratarResultadoMatch(true, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
-			}
-		else if(eleccion.equals("rechazo")) { 
-			System.out.println("No te mola huh?" ); 
-			service.tratarResultadoMatch(false, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
-			}
-		
-	
-		System.out.println(model);
-		System.out.println(eleccion + "Esta ha sido la eleccion");
-		int idTronistaActual = Integer.parseInt(idTronista);
-		
-		return "redirect:/listar/tronista/"+(idTronistaActual++);
-	}
-	 */
 	
 	@GetMapping("/confirmaEliminaUsuario")
 	public String confirmaEliminaUsuario(Model model) {
@@ -195,7 +173,6 @@ public class ControlUsuario {
 		String idPreferencia="";
 		model.addAttribute("idPreferencia", idPreferencia);
 		model.addAttribute("preferencias", servicePreferencia.listar());
-		System.out.println(servicePreferencia.listar());
 		return "/usuarios/preferenciaUsuario";
 	}
 	
@@ -220,6 +197,12 @@ public class ControlUsuario {
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/usuario";
 		}
+	
+	@GetMapping("/cerrarSesion")
+	public String cerrarSesion() {
+		this.usuarioSesion = null;
+		return "redirect:/";
+	}
 
 }
 	
