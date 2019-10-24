@@ -11,14 +11,12 @@ package com.grupo2.lucatinder.service;
 import java.util.List;
 import java.util.Set;
 
-import javax.transaction.Transactional;
 
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.grupo2.lucatinder.dao.DaoUsuario;
-import com.grupo2.lucatinder.dao.DaoUsuarioCustomImpl;
 import com.grupo2.lucatinder.dao.DaoUsuarioFake;
 import com.grupo2.lucatinder.model.Usuario;
 
@@ -35,27 +33,29 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		return daoUsuario.save(objeto);
 	}
 	
-	@Override
-	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
-		return daoUsuario.pedirMatchesConfirmados(usuario);
-	}
+	
 
 	@Override
 	public List<Usuario> listar() {
-		System.out.println("---------------IMPRIMIENDO DAOUSUARIO--------------------");
-		System.out.println(daoUsuario);
 		return daoUsuario.findAll();
 	}
 
-
+	@Override
+	public Usuario modificarUsuario(Usuario objeto) {
+		return daoUsuario.save(objeto);
+	}
+	
+	public void eliminarUsuario(int id) {
+		daoUsuario.deleteById(id);
+	}
+	
 	public List<Usuario> pedirPosiblesMatches(int id) {
 		return daoUsuario.pedirPosiblesMatches(daoUsuario.getOne(id));
 	}
 	
 	
 	public void tratarResultadoMatch(boolean posibleMatch,Usuario usuarioPrimero, Usuario usuarioSegundo) {
-		daoUsuario.tratarResultadoMatch(posibleMatch, usuarioPrimero, usuarioSegundo);
-		
+		daoUsuario.tratarResultadoMatch(posibleMatch, usuarioPrimero, usuarioSegundo);	
 	}
 
 	@Override
@@ -92,4 +92,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 		daoUsuario.deleteById(id);
 	}
 
+	@Override
+	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+		return daoUsuario.pedirMatchesConfirmados(usuario);
+	}
+
+	
 }

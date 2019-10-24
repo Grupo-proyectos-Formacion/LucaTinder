@@ -31,6 +31,7 @@ class LucatinderApplicationTests {
 	void contextLoads() {
 	}
 	
+	
 	/**
 	 * TestAñadirUsuario
 	 * 
@@ -51,7 +52,7 @@ class LucatinderApplicationTests {
 		
 		
 		
-		assertEquals(inicio, siguiente);
+		assertEquals(inicio++, siguiente);
 		logger.info("------------------------ Test creación de Usuario");
 	}
 

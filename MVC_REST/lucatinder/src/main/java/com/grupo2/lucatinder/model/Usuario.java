@@ -5,19 +5,33 @@
  */
 package com.grupo2.lucatinder.model;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	
 
 	@Id
 	@GeneratedValue
-	@Column(name="id_usuario")
+    @Column(name = "id_usuario")
 	private int idUsuario;
 	
 	@Column(name="nombre_usuario")
@@ -37,6 +51,17 @@ public class Usuario {
 	
 	@Column(name="imagen_usuario")
 	private String imagenUsuario;
+	
+	@JsonIgnore
+	@ManyToMany
+	(fetch= FetchType.EAGER,   cascade = CascadeType.ALL)
+	@JoinTable(name="usuario_preferencia", joinColumns={@JoinColumn(name ="id_usuario", referencedColumnName ="id_usuario")},
+	inverseJoinColumns={@JoinColumn(name ="id_preferencia", referencedColumnName ="id_preferencia")})
+	
+	//@OneToMany(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Preferencia> preferenciaUsuario;
+	
+	
 	
 	public Usuario(){
 		super();
@@ -120,13 +145,28 @@ public Usuario(String nombreUsuario, String descripcionUsuario, int edadUsuario,
 	public void setImagenUsuario(String imagenUsuario) {
 		this.imagenUsuario = imagenUsuario;
 	}
+	
+	public List<Preferencia> getPreferenciaUsuario() {
+		return preferenciaUsuario;
+	}
+
+	public void setPreferenciaUsuario(List<Preferencia> preferenciaUsuario) {
+		this.preferenciaUsuario = preferenciaUsuario;
+	}
+
+	public void addPreferenciaUsuario(Preferencia preferencia) {
+		this.preferenciaUsuario.add(preferencia);
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", descripcionUsuario="
 				+ descripcionUsuario + ", edadUsuario=" + edadUsuario + ", ciudadUsuario=" + ciudadUsuario
-				+ ", sexoUsuario=" + sexoUsuario + "]\n";
+				+ ", sexoUsuario=" + sexoUsuario + ", imagenUsuario=" + imagenUsuario + ", preferenciaUsuario="
+				+ preferenciaUsuario + "]";
 	}
+
+	
 
 	
 	

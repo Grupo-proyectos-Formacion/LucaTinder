@@ -11,5 +11,8 @@ public interface ServicioUsuario extends ServicioGenerico<Usuario> {
 	List<Usuario> pedirPosiblesMatches(Usuario usuario);
 	public void poblar();
 	public Usuario getByName(String nombreUsario);
-	Set<Usuario> pedirMatchesConfirmados(Usuario usuario);
+	public Usuario modificarUsuario(Usuario objeto);
+	public void eliminarUsuario(int id);
+	List<Usuario> pedirMatchesConfirmados(Usuario usuario);
 }
+		

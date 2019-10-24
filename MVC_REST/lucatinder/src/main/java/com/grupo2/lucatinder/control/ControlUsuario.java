@@ -1,5 +1,7 @@
 package com.grupo2.lucatinder.control;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,10 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.model.Usuario;
+import com.grupo2.lucatinder.service.ServicioPreferencia;
 import com.grupo2.lucatinder.service.ServicioUsuario;
+import com.grupo2.lucatinder.service.ServicioUsuarioImpl;
+
+/**
+ * 
+ * @author Daniel, Sisa, Julian, Luis
+ *
+ */
+
 
 @Controller
 public class ControlUsuario {
@@ -21,6 +35,9 @@ public class ControlUsuario {
 	
 	@Autowired
 	private ServicioUsuario service;
+	
+	@Autowired
+	private ServicioPreferencia servicePreferencia;
 	
 	private Usuario usuarioSesion;
 	
@@ -58,6 +75,7 @@ public class ControlUsuario {
 		return "usuarios/usuario";
 	}
 	
+	
 	@GetMapping("/crear/usuario")
 	public String crear(Model model){
 		model.addAttribute("usuario", new Usuario());
@@ -66,11 +84,11 @@ public class ControlUsuario {
 	
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario, Model model){
-		
-		model.addAttribute("usuario" , service.crear(usuario));
-		this.usuarioSesion = usuario;
+		//System.out.println(usuario);
+		 model.addAttribute("usuario" , service.crear(usuario));
+		 this.usuarioSesion = usuario;
 		return "/usuarios/usuario";
-	}
+	}	
 	
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
@@ -80,6 +98,16 @@ public class ControlUsuario {
 		model.addAttribute("eleccion",eleccion);
 		return "usuarios/lista";
 	}
+	
+	@GetMapping("/listar/matches")
+	public String listarMatchesConfirmados(Model model) {
+		List<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
+		System.out.println(matches);
+		model.addAttribute("usuarios", matches);
+		return "usuarios/lista";
+	}
+	
 	
 	@GetMapping("/listar/tronista/{id}")
 	public String perfilMatch(@PathVariable int id, Model model) {
@@ -163,14 +191,37 @@ public class ControlUsuario {
 		return "/usuarios/crearUsuario";
 	}
 	
-	@GetMapping("/listar/matches")
-	public String listarMatchesConfirmados(Model model) {
-		Set<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
-		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
-		System.out.println(matches);
-		model.addAttribute("usuarios", matches);
-		return "usuarios/lista";
+	@GetMapping("/preferencia")
+	public String darPreferencia(Model model) {
+
+		String idPreferencia="";
+		model.addAttribute("idPreferencia", idPreferencia);
+		model.addAttribute("preferencias", servicePreferencia.listar());
+		System.out.println(servicePreferencia.listar());
+		return "/usuarios/preferenciaUsuario";
 	}
 	
+	@PostMapping("/preferencia")
+	public String tratarDarPreferencia(@RequestParam String idPreferencia,Model model) {
+		Preferencia preferencia = servicePreferencia.getById(Integer.parseInt(idPreferencia));
+		//this.usuarioSesion.addPreferenciaUsuario(preferencia);
+		List<Preferencia> preferencias = null;
+		if(usuarioSesion.getPreferenciaUsuario() == null) {
+			preferencias = new ArrayList<>();
+		} else preferencias = usuarioSesion.getPreferenciaUsuario();
+		
+		preferencias.add(preferencia);
+		this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		System.out.println("------  "+usuarioSesion);
+		System.out.println("------  "+usuarioSesion.getPreferenciaUsuario());		
+		
+		service.crear(this.usuarioSesion);
+		
+		//this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		System.out.println("LISTA DE PREFERENCIAS DE USUARIO: "+this.usuarioSesion.getPreferenciaUsuario());
+		model.addAttribute("usuario", this.usuarioSesion);
+		return "/usuarios/usuario";
+		}
+
 }
 	
