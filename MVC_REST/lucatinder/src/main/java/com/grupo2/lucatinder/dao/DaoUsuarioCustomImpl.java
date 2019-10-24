@@ -22,6 +22,8 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 	    return query.getResultList();
 	}
 	
+	
+	
 	@Override
 	public void tratarResultadoMatch(Boolean eleccion, Usuario usuarioPrimero, Usuario usuarioSegundo) {
 		if(eleccion) {
