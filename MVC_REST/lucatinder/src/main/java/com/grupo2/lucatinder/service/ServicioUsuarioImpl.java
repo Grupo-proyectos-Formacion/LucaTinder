@@ -32,6 +32,11 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	public Usuario crear(Usuario objeto) {
 		return daoUsuario.save(objeto);
 	}
+	
+	@Override
+	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+		return daoUsuario.pedirMatchesConfirmados(usuario);
+	}
 
 	@Override
 	public List<Usuario> listar() {
