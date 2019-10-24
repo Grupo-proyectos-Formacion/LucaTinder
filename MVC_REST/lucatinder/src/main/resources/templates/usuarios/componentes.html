@@ -13,15 +13,14 @@
 	th:href="@{/css/estilosPersonalizados.css}" />
 </head>
 
-<body>
+<body >
 
 	<!-- HEADER -->
-	<header class="masthead" th:fragment="header">
+	<header style="overflow:hidden;" class="masthead" th:fragment="header">
 		<div class="container d-flex h-100 align-items-center">
 			<div class="mx-auto text-center">
-				<h1 class="mx-auto my-0 text-uppercase">LUCA TINDER</h1>
-				<h2 class="text-white-50 mx-auto mt-2 mb-5">Encuentra a tu
-					media naranja!</h2>
+				<h1 class="mx-auto luca-tinder my-0 text-uppercase">LUCA TINDER</h1>
+				<h2 class="text-white-50 luca-tinder mx-auto mt-2 mb-5">Encuentra a tu media naranja!</h2>
 			</div>
 		</div>
 	</header>
@@ -29,7 +28,7 @@
 	<!-- NAVBAR USUARIO LOGEADO-->
 	<nav th:fragment="navBarUsuario" class=" navbar navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand text-white" th:href="@{/}">LUCA TINDER</a>
+			<a class="navbar-brand text-white">LUCA TINDER</a>
 			<div id="navbarNav">
 				<ul class="ml-auto navbar-nav men">
 					<li class="nav-item pr-4"><a class="text-white nav-link "
@@ -38,6 +37,8 @@
 					<li class="nav-item pr-4"><a class="text-white nav-link"
 						th:href="@{/listar/matches}">Ver matches</a></li>
 					<li class="nav-item pr-4"><a class="text-white nav-link"
+						th:href="@{/preferencia}">Añadir preferencias</a></li>
+					<li class="nav-item "><a class="text-white nav-link"
 						th:href="@{/cerrarSesion}">Cerrar sesión</a></li>
 				</ul>
 			</div>
@@ -48,7 +49,7 @@
 	<div th:fragment="navBarNoUsuario">
 		<nav class="navbar navbar-light  bg-dark fixed-top" id="mainNav">
 			<div class="container">
-				<a class="navbar-brand text-light js-scroll-trigger" th:href="@{/}">LUCA
+				<a class="navbar-brand text-light js-scroll-trigger">LUCA
 					TINDER</a>
 
 				<div id="navbarResponsive">
@@ -66,7 +67,7 @@
 	<nav th:fragment="navBarUsuarioSinOpc"
 		class=" navbar navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand text-white" th:href="@{/}">LUCA TINDER</a>
+			<a class="navbar-brand text-white">LUCA TINDER</a>
 			<div id="navbarNav">
 				<ul class="ml-auto navbar-nav men">
 					<li class="nav-item pr-4"><a class="text-white nav-link "
@@ -84,7 +85,7 @@
 				<div class=" mx-auto">
 					<h2 class="text-white mb-4">¡EL AMOR TE ESPERA!</h2>
 					<p class="text-white">
-						En <strong>Luca Tinder</strong> somos especialistas en unir almas
+						<strong>En LUCA TINDER</strong> somos especialistas en unir almas
 						gemelas, ¿a qué esperas para encontrar la tuya?
 					</p>
 				</div>
@@ -98,7 +99,7 @@
 	<section th:fragment="formularios" id="projects"
 		class="projects-section bg-light">
 		<div class="container">
-			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+			<div id="fila1" class="row justify-content-center no-gutters mb-5 mb-lg-0">
 				<div id="pareja3" class="col-lg-6 "></div>
 				<div class="col-lg-6">
 					<div class="bg-black text-center h-100 project">
@@ -168,7 +169,7 @@
 			</div>
 
 			<!-- FORMULARIO INICIO SESION -->
-			<div class="row justify-content-center no-gutters ">
+			<div id="fila2" class="row justify-content-center no-gutters ">
 				<div id="pareja4" class="img-fluid col-lg-6"></div>
 				<div class="col-lg-6 order-lg-first">
 					<div class="bg-black text-center h-100 project">
@@ -202,7 +203,7 @@
 	<!-- FOOTER  -->
 	<footer th:fragment="footer"
 		class="bg-black small text-center text-white-50 mt-5">
-		<div class="container">Copyright &copy; Your Website 2019</div>
+		<div class="container">Realizado por Julián, Sisa, Luis y Daniel</div>
 	</footer>
 </body>
 </html>

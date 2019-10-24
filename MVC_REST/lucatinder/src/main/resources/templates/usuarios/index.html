@@ -8,15 +8,20 @@
 	
 	<link href="..\static\css\bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 	<link href="..\static\css\estilosPersonalizados.css" rel="stylesheet" th:href="@{/css/estilosPersonalizados.css}" />
+
 </head>
 
 <body>
-	<div th:replace="usuarios/componentes :: navBarNoUsuario"></div>
-	<div th:replace="usuarios/componentes :: header"></div>
-	<div th:replace="usuarios/componentes :: seccion"></div>
-	<div th:replace="usuarios/componentes :: formularios"></div>
+
+	<div style="overflow:hidden;" th:replace="usuarios/componentes :: navBarNoUsuario"></div>
+	<div style="overflow:hidden;" th:replace="usuarios/componentes :: header"></div>
+	<div style="overflow:hidden;" th:replace="usuarios/componentes :: seccion"></div>
+	<div style="overflow:hidden;" th:replace="usuarios/componentes :: formularios"></div>
 	<div th:replace="usuarios/componentes :: footer"></div>
 	 
-	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>	
+	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="https://unpkg.com/scrollreveal"></script>
+	<script src="js/propio.js"></script>
+	
 </body>
 </html>
