@@ -122,10 +122,10 @@ public class ControlUsuarioRest {
 		return service.listar();
 	}
 	
-	@GetMapping("/listar/posiblesMatches/rest")
-	public List<Usuario> pedirPosiblesMatches(){
+	@GetMapping("/listar/posiblesMatches/rest/{id}")
+	public List<Usuario> pedirPosiblesMatches(@PathVariable int id){
 		logger.info("--------Listando posibles Mathes  en Rest -------");
-		return service.pedirPosiblesMatches(usuarioSesion.getIdUsuario());
+		return service.pedirPosiblesMatches(service.getById(id));
 	}	
 	
 	@GetMapping("/listar/pedirMatchesConfirmados/rest/")

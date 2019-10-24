@@ -37,10 +37,10 @@ export class UsuarioService {
     return this.http.post(myGlobals.url+"/tratar/resultadoMatch/rest", interaccion, httpOptions);
   }
   public getPerfiles(idUsuario) {
-    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest");
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
   } 
-  public getMatches(){
-    return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/");
+  public getMatches(idUsuario){
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/"+idUsuario);
   }
   public getPreferencias(){
     return this.http.get<Preferencia[]>(myGlobals.url+"/listar/preferencias/rest");

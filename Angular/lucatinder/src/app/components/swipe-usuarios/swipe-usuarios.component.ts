@@ -7,13 +7,10 @@ import { Usuario } from 'src/app/models/Usuario';
   templateUrl: './swipe-usuarios.component.html',
   styleUrls: ['./swipe-usuarios.component.css']
 })
-
 export class SwipeUsuariosComponent implements OnInit {
   usuarioSesion:Usuario;
-  perfiles: Usuario[];
+  matches: Usuario[];
   usuario:Usuario;
-  numeroPerfiles:number;
-  iterador:number = 0;
   constructor(private service:UsuarioService) {
   }
   async ngOnInit() {
@@ -22,29 +19,23 @@ export class SwipeUsuariosComponent implements OnInit {
         console.log("HOLA TENEMOS DATOS")
         console.log(data);
         this.usuarioSesion= data;
-        this.poblarPerfiles();
+        this.poblarMatches();
       }
     )
   }
 
-  poblarPerfiles(){
+  poblarMatches(){
     this.service.getPerfiles(this.usuarioSesion.idUsuario).subscribe(
       data=>{
-        this.perfiles = data;
-        console.log(this.perfiles);
-        this.numeroPerfiles = this.perfiles.length;
-        this.listarUsuario();
+        this.matches = data;
+        console.log(this.matches);
+        this.usuario=this.matches[0];
       }
     );
   }
 
-  listarUsuario(){
-    this.usuario=this.perfiles[this.iterador];
-    this.iterador++;
-    this.iterador%=this.numeroPerfiles;
+  listarUsuarioActual(){
   }
-
-
 
 
 
