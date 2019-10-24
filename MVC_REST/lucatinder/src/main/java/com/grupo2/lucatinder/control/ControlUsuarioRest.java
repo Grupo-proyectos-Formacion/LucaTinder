@@ -1,6 +1,7 @@
 package com.grupo2.lucatinder.control;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo2.lucatinder.model.Preferencia;
 import com.grupo2.lucatinder.model.Usuario;
 import com.grupo2.lucatinder.service.ServicioUsuario;
 import com.grupo2.lucatinder.utilidades.Conversor;
@@ -127,27 +129,12 @@ public class ControlUsuarioRest {
 	}	
 	
 	@GetMapping("/listar/pedirMatchesConfirmados/rest/{id}")
-	public Set<Usuario> pedirMatchesConfirmados(@PathVariable int id){
+	public List<Usuario> pedirMatchesConfirmados(@PathVariable int id){
 		logger.info("--------Listando  Matches Confirmados  en Rest---------- ");
-		return service.pedirMatchesConfirmados(service.getById(id));
+		return service.pedirMatchesConfirmados(this.usuarioSesion);
+		//return service.pedirMatchesConfirmados(service.getById(id));
 	}
 	
-	
-	/*@PostMapping("/tratar/resultadoMatch/")
-	public void tratarResultadoMatch (
-			@RequestBody String resultado, 
-			@PathVariable String idTronista
-			) throws JsonMappingException, JsonProcessingException {			
-		logger.info("--------Tratando resultados en Rest verificar-----------");
-		String json = resultado;
-		JsonNode jsonNode = objectMapper.readTree(json);
-		String js = jsonNode.get("resultado").asText();				
-		logger.info(js);
-		logger.info("RESULTADO TEXT : "+js);
-		Boolean resultadoConvertido = Conversor.convertirStringABoolean(js);
-		
-		service.tratarResultadoMatch(resultadoConvertido,this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
-	}*/
 	@PostMapping("/tratar/resultadoMatch/rest")
 	public void tratarResultadoMatch (
 			@RequestBody String resultado
@@ -177,6 +164,22 @@ public class ControlUsuarioRest {
 	public Usuario editUsuario(@RequestBody Usuario usuario) {
 		logger.info("-------Modificando Usuario en Rest");
 		return service.modificarUsuario(usuario);
+	}
+	
+	@GetMapping("/listar/preferencias/rest")
+	public List<Preferencia> preferenciasUsuario(){
+		return this.usuarioSesion.getPreferenciaUsuario();
+	}
+	
+	@PostMapping("/listar/preferencias/rest")
+	public void listarPreferenciasUsuario(@RequestBody Preferencia preferencia){
+		List<Preferencia> preferencias = null;
+		if(this.usuarioSesion.getPreferenciaUsuario()==null) {
+			preferencias = new ArrayList<>();
+		} else preferencias = this.usuarioSesion.getPreferenciaUsuario();
+		preferencias.add(preferencia);
+		this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		service.crear(this.usuarioSesion);
 	}
 	
 	

@@ -1,6 +1,8 @@
 <div>
 
-  <input type="button" value="true" (click)="enviarResultado(true)">
-  <input type="button" value="false" (click)="enviarResultado(false)">
+  <button id="likeado" type="submit" class="card-link fas fa-heart fa-3x" (click)="enviarResultado(true)"></button>
+  <!--<input type="button" value="true" (click)="enviarResultado(true)">-->
+  <button id="deslikeado" type="submit" th:name="eleccion" th:value="rechazo" class="card-link fas fa-times fa-4x "></button>
+  <!--<input type="button" value="false" (click)="enviarResultado(false)">-->
   
 </div>

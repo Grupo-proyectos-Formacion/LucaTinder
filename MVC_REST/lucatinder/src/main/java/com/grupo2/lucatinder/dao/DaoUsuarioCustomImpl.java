@@ -1,5 +1,6 @@
 package com.grupo2.lucatinder.dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -54,11 +55,11 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Set<Usuario> pedirMatchesConfirmados(Usuario usuario) {
+	public List<Usuario> pedirMatchesConfirmados(Usuario usuario) {
 		Query query = entityManager.createNativeQuery("SELECT id_lover_dos FROM lucatinder_grupo2.match WHERE id_lover_uno = ?");
 		query.setParameter(1, usuario.getIdUsuario());
 		List<Integer> matches = query.getResultList();
-		Set<Usuario> usuariosSet = new HashSet<Usuario>();
+		List<Usuario> usuariosSet = new ArrayList<Usuario>();
 		for (int idUsuarioMatch : matches) {
 			usuariosSet.add(entityManager.find(Usuario.class, idUsuarioMatch));
 		}
