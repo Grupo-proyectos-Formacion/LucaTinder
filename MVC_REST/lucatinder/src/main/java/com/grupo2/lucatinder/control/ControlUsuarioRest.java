@@ -128,8 +128,8 @@ public class ControlUsuarioRest {
 		return service.pedirPosiblesMatches(service.getById(id));
 	}	
 	
-	@GetMapping("/listar/pedirMatchesConfirmados/rest/{id}")
-	public List<Usuario> pedirMatchesConfirmados(@PathVariable int id){
+	@GetMapping("/listar/pedirMatchesConfirmados/rest/")
+	public List<Usuario> pedirMatchesConfirmados(/*@PathVariable int id*/){
 		logger.info("--------Listando  Matches Confirmados  en Rest---------- ");
 		return service.pedirMatchesConfirmados(this.usuarioSesion);
 		//return service.pedirMatchesConfirmados(service.getById(id));
@@ -171,7 +171,7 @@ public class ControlUsuarioRest {
 		return this.usuarioSesion.getPreferenciaUsuario();
 	}
 	
-	@PostMapping("/listar/preferencias/rest")
+	@PostMapping("/insertar/preferencias/rest")
 	public void listarPreferenciasUsuario(@RequestBody Preferencia preferencia){
 		List<Preferencia> preferencias = null;
 		if(this.usuarioSesion.getPreferenciaUsuario()==null) {
