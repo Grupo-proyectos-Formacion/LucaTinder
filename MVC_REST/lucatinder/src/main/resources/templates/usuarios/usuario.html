@@ -13,7 +13,7 @@
 
 <body>
 
-	<div th:replace="usuarios/navBarUsuario :: navBarUsuario"></div>
+	<div th:replace="usuarios/componentes :: navBarUsuario"></div>
 	
 	<div class="p-5" style="min-height:100vh;">
 		<div class="card m-auto  p-1" style="width: 18rem;">
@@ -27,7 +27,14 @@
 		    <li th:if="${usuario.sexoUsuario}" class="list-group-item">Mujer</li>
 		    <li th:if="${!usuario.sexoUsuario}" class="list-group-item">Hombre</li>
 		    <li th:text="${usuario.ciudadUsuario}" class="list-group-item"></li>
+		    <li class="list-group-item">
+		    Gustos:
+		    	<ul th:each="pref : ${prefer}">
+		    		<li th:text="${pref.nombrePreferencia}"></li>
+		    	</ul>
+		    </li>
 		  </ul>
+		
 		  <div class="card-body d-flex justify-content-around">
 		    <a style="color:blue" th:href="@{/editar}" class=" card-link fas fa-edit fa-2x" > </a> <!-- fas fa-times fa-4x -->
 		    <a style="color:red" th:href="@{/confirmaEliminaUsuario}" class=" card-link fas fa-trash-alt fa-2x "></a> <!-- fas fa-heart fa-3x -->
@@ -35,7 +42,7 @@
 		</div>
 	</div>
 
-	<div th:replace="usuarios/footer :: footer"></div>
+	<div th:replace="usuarios/componentes :: footer"></div>
 
 	<script src="..\static\js\jquery-3.4.1.js" th:src="@{/js/jquery-3.4.1.js}"></script>	
 	<script src="https://kit.fontawesome.com/2dfa1c2dc6.js" crossorigin="anonymous"></script>

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<div th:replace="usuarios/navBarUsuarioSinOpc :: navBarUsuarioSinOpc"></div>   
+	<div th:replace="usuarios/componentes :: navBarUsuarioSinOpc"></div>   
       
 	<div class=" p-5 mb-5" style="min-height:100vh;">
 		<div class=" card m-auto  p-1" style="width: 18rem;">
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 	
-	<div th:replace="usuarios/footer :: footer"></div>
+	<div th:replace="usuarios/componentes :: footer"></div>
 	
 	<script src="..\static\js\jquery-3.4.1.js" th:src="@{/js/jquery-3.4.1.js}"></script>				
 	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>	

@@ -10,10 +10,9 @@
 	<link href="..\static\css\bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 	<link href="..\static\css\estilosPersonalizadoscss" rel="stylesheet" th:href="@{/css/estilosPersonalizados.css}" />
 </head>
-
 <body>
 
-	<div th:replace="usuarios/navBarUsuario :: navBarUsuario"></div>
+	<div th:replace="usuarios/componentes :: navBarUsuario"></div>
 	
 	<div id="confirmaEliminacionUsu" class="row d-flex align-items-center ">
 		<div class="col-2"></div>
@@ -28,7 +27,7 @@
 		<div class="col-2"></div>
 	</div>
 	
-	<div th:replace="usuarios/footer :: footer"></div>
+	<div th:replace="usuarios/componentes :: footer"></div>
 	
 </body>
 </html>

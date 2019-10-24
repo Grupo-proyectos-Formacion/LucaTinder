@@ -10,7 +10,7 @@
     <link href="..\static\css\estilosPersonalizados.css" rel="stylesheet" th:href="@{/css/estilosPersonalizados.css}" />
 </head>
 <body>
-	<div th:replace="usuarios/navBarUsuarioSinOpc :: navBarUsuarioSinOpc"></div>
+	<div th:replace="usuarios/componentes :: navBarUsuarioSinOpc"></div>
 
 ​    <div class="row p-5" style="min-height:100vh;">
 		<div class="col-4 offset-4">
@@ -60,7 +60,7 @@
 		</div>
 	</div>
 	
-	<div th:replace="usuarios/footer :: footer"></div>
+	<div th:replace="usuarios/componentes :: footer"></div>
 
 	<script src="..\static\js\jquery-3.4.1.js" th:src="@{/js/jquery-3.4.1.js}"></script>	
 	<script src="https://kit.fontawesome.com/2dfa1c2dc6.js" crossorigin="anonymous"></script>

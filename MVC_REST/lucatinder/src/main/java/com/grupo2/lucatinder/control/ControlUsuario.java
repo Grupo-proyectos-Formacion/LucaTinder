@@ -53,6 +53,7 @@ public class ControlUsuario {
 			return "usuarios/index";
 		}
 		else {
+			model.addAttribute("prefer", this.usuarioSesion.getPreferenciaUsuario());
 			model.addAttribute("usuario", this.usuarioSesion);
 			return "usuarios/usuario";
 		}
@@ -60,12 +61,14 @@ public class ControlUsuario {
 	
 	@GetMapping("/login")
 	public String tratarLoginGet(Model model){
+		
 		return "redirect:/";
 	}
 	
 	@PostMapping("/login")
 	public String tratarLogin(@RequestParam String usuario, Model model){
 		this.usuarioSesion = service.getByName(usuario);
+		model.addAttribute("prefer", this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario",this.usuarioSesion);
 		return "usuarios/usuario";
 	}
@@ -100,7 +103,7 @@ public class ControlUsuario {
 		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
 		System.out.println(matches);
 		model.addAttribute("usuarios", matches);
-		return "usuarios/lista";
+		return "usuarios/matches";
 	}
 	
 	
@@ -214,6 +217,8 @@ public class ControlUsuario {
 		
 		//this.usuarioSesion.setPreferenciaUsuario(preferencias);
 		System.out.println("LISTA DE PREFERENCIAS DE USUARIO: "+this.usuarioSesion.getPreferenciaUsuario());
+System.out.println(this.usuarioSesion.getPreferenciaUsuario());
+model.addAttribute("prefer", this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario", this.usuarioSesion);
 		return "/usuarios/usuario";
 		}

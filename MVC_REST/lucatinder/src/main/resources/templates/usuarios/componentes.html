@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>LUCA TINDER</title>
+
+<link href="..\static\css\bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
+<link href="..\static\css\estilosPersonalizados.css" rel="stylesheet"
+	th:href="@{/css/estilosPersonalizados.css}" />
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<header class="masthead" th:fragment="header">
+		<div class="container d-flex h-100 align-items-center">
+			<div class="mx-auto text-center">
+				<h1 class="mx-auto my-0 text-uppercase">LUCA TINDER</h1>
+				<h2 class="text-white-50 mx-auto mt-2 mb-5">Encuentra a tu
+					media naranja!</h2>
+			</div>
+		</div>
+	</header>
+
+	<!-- NAVBAR USUARIO LOGEADO-->
+	<nav th:fragment="navBarUsuario" class=" navbar navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand text-white" th:href="@{/}">LUCA TINDER</a>
+			<div id="navbarNav">
+				<ul class="ml-auto navbar-nav men">
+					<li class="nav-item pr-4"><a class="text-white nav-link "
+						th:href="@{'/listar/posiblesMatches/' + ${usuario.idUsuario}}">Buscar
+							match</a></li>
+					<li class="nav-item pr-4"><a class="text-white nav-link"
+						th:href="@{/listar/matches}">Ver matches</a></li>
+					<li class="nav-item pr-4"><a class="text-white nav-link"
+						th:href="@{/cerrarSesion}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- NAVBAR DEL INDEX -->
+	<div th:fragment="navBarNoUsuario">
+		<nav class="navbar navbar-light  bg-dark fixed-top" id="mainNav">
+			<div class="container">
+				<a class="navbar-brand text-light js-scroll-trigger" th:href="@{/}">LUCA
+					TINDER</a>
+
+				<div id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a
+							class="text-light nav-link js-scroll-trigger" href="#projects">Acceder</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<!-- NAVBAR USUSARIO SIN OPCIONES -->
+	<nav th:fragment="navBarUsuarioSinOpc"
+		class=" navbar navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand text-white" th:href="@{/}">LUCA TINDER</a>
+			<div id="navbarNav">
+				<ul class="ml-auto navbar-nav men">
+					<li class="nav-item pr-4"><a class="text-white nav-link "
+						th:href="@{/}">Volver</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- SECCION DEL INDEX -->
+	<section th:fragment="seccion" id="about"
+		class="about-section text-center">
+		<div class="container img1 pt-5 col-lg-12">
+			<div class="row">
+				<div class=" mx-auto">
+					<h2 class="text-white mb-4">¡EL AMOR TE ESPERA!</h2>
+					<p class="text-white">
+						En <strong>Luca Tinder</strong> somos especialistas en unir almas
+						gemelas, ¿a qué esperas para encontrar la tuya?
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!--------------------------------------------------------------- FORMULARIOS ACCESO --------------------------------------------------->
+	<section th:fragment="formularios" id="projects"
+		class="projects-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+				<div id="pareja3" class="col-lg-6 "></div>
+				<div class="col-lg-6">
+					<div class="bg-black text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="project-text w-100 my-auto text-center text-lg-left">
+
+								<!-- FORMULARIO REGISTRO  -->
+								<form id="form_registro" class="text-white"
+									th:action="@{/crear/usuario}" th:object="${usuario2}"
+									method="post">
+									<input type="hidden" th:field="${usuario2.idUsuario}" />
+									<div class="form-group row">
+										<div class="col-sm-10 m-auto">
+											<h4 class="text-white text-center">REGISTRARSE</h4>
+											<input type="text" class="form-control" placeholder="Nombre"
+												th:field="${usuario2.nombreUsuario}"
+												th:value="${usuario2.nombreUsuario}">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-10 m-auto m-auto">
+											<input type="text" class="form-control" placeholder="Ciudad"
+												th:field="${usuario2.ciudadUsuario}"
+												th:value="${usuario2.ciudadUsuario}">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-10 m-auto ">
+											<input type="number" class="form-control" id="inputPassword3"
+												placeholder="Edad" th:field="${usuario2.edadUsuario}"
+												th:value="${usuario2.edadUsuario}">
+										</div>
+									</div>
+
+									<div class="row form-group ">
+										<div class="col-sm-10 m-auto ">
+											<div class="input-group">
+												<select th:field="${usuario2.sexoUsuario}"
+													th:value="${usuario2.sexoUsuario}" class="custom-select"
+													id="inputGroupSelect04"
+													aria-label="Example select with button addon">
+													<option th:value="0">Hombre</option>
+													<option th:value="1">Mujer</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<div class="col-sm-10 m-auto">
+											<textarea th:field="${usuario2.descripcionUsuario}"
+												th:value="${usuario2.descripcionUsuario}"
+												class="form-control" aria-label="With textarea"
+												placeholder="Descríbete..."></textarea>
+										</div>
+									</div>
+									<div class="form-group row text-center">
+										<div class="col-sm-10 m-auto">
+											<button type="submit" class="btn btn-primary ml-auto">Registrarse</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- FORMULARIO INICIO SESION -->
+			<div class="row justify-content-center no-gutters ">
+				<div id="pareja4" class="img-fluid col-lg-6"></div>
+				<div class="col-lg-6 order-lg-first">
+					<div class="bg-black text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="project-text w-100 my-auto text-center text-lg-right">
+
+								<form id="form_registro" class="text-white p-5"
+									th:action="@{/login}" method="POST">
+									<div class="form-group row">
+										<div class="col-sm-10 m-auto">
+											<h4 class="text-white text-center">INICIAR SESION</h4>
+											<input type="text" th:name="usuario" class="form-control"
+												id="inputEmail3" placeholder="Nombre">
+										</div>
+									</div>
+									<div class="form-group row text-center">
+										<div class="col-sm-10 m-auto">
+											<button type="submit" class="btn btn-primary ml-auto">Entrar</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- -------------------------------------------------------------------------------------- -->
+
+	<!-- FOOTER  -->
+	<footer th:fragment="footer"
+		class="bg-black small text-center text-white-50 mt-5">
+		<div class="container">Copyright &copy; Your Website 2019</div>
+	</footer>
+</body>
+</html>

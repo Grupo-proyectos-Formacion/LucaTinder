@@ -11,11 +11,11 @@
 </head>
 
 <body>
-	<div th:replace="usuarios/navBarNoUsuario :: navBarNoUsuario"></div>
-	<div th:replace="usuarios/header :: header"></div>
-	<div th:replace="usuarios/seccion :: seccion"></div>
-	<div th:replace="usuarios/formularios :: formularios"></div>
-	<div th:replace="usuarios/footer :: footer"></div>
+	<div th:replace="usuarios/componentes :: navBarNoUsuario"></div>
+	<div th:replace="usuarios/componentes :: header"></div>
+	<div th:replace="usuarios/componentes :: seccion"></div>
+	<div th:replace="usuarios/componentes :: formularios"></div>
+	<div th:replace="usuarios/componentes :: footer"></div>
 	 
 	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>	
 </body>
