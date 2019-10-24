@@ -14,10 +14,15 @@ export class PreferenciaComponent implements OnInit {
   constructor(private service:UsuarioService) {
 
       this.service.getPreferencias().subscribe()
-
+      this.listarPrerenciasUsuario();
+      console.log("-++++++++-");
    }
 
+
+
   ngOnInit() {
+    
+  
   }
 
   listarPrerenciasUsuario(){
@@ -25,7 +30,7 @@ export class PreferenciaComponent implements OnInit {
     this.service.getPreferencias().subscribe(
       data => {
         this.preferencias=data;
-        console.log("---------------------------"+data);
+        console.log(data);
       },
       error => console.log(error)
     )
