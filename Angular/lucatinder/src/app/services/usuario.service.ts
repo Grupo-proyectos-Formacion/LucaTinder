@@ -4,6 +4,7 @@ import { Usuario } from '../models/Usuario';
 import { Interaccion } from '../models/interaccion';
 import * as myGlobals from '../variables/globals';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -38,6 +39,7 @@ export class UsuarioService {
   public getPerfiles(idUsuario) {
     return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
   } 
+ 
 }
 
 

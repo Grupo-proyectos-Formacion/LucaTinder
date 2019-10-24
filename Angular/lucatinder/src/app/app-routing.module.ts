@@ -12,8 +12,8 @@ const routes: Routes = [
   {path:'Modificar',component:ModificarUsuarioComponent}, 
   {path:'Elegir',component:LikeDislikeComponent},
   {path:'verPerfil', component:ListarUsuarioComponent},
-  {path:'listarPerfiles', component:ListarPerfilesComponent}
-  {path:'login', component: LoginComponent}
+  {path:'listarPerfiles', component:ListarPerfilesComponent},
+  {path:'', component: LoginComponent}
 ];
 
 @NgModule({
