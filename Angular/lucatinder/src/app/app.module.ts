@@ -12,6 +12,7 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
+import { PreferenciaComponent } from './components/preferencia/preferencia.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { ListarPerfilesComponent } from './components/listar-perfiles/listar-per
     ModificarUsuarioComponent,
     LikeDislikeComponent,
     ListarUsuarioComponent,
-    ListarPerfilesComponent
+    ListarPerfilesComponent,
+    PreferenciaComponent
   ],
   imports: [
     BrowserModule,

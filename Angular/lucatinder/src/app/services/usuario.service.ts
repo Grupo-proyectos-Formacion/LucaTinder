@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/Usuario';
+import {Preferencia} from '../models/preferencia';
 import { Interaccion } from '../models/interaccion';
 import * as myGlobals from '../variables/globals';
+import { from } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -38,6 +40,10 @@ export class UsuarioService {
   public getPerfiles(idUsuario) {
     return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
   } 
+
+  public getPreferencias(){
+    return this.http.get<Preferencia[]>(myGlobals.url+"/listar/preferencias");
+  }
 
  
 }
