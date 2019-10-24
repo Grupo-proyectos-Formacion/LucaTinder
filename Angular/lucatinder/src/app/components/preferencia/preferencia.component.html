@@ -1,0 +1,14 @@
+
+  <div class="container">
+      <div class="d-flex w-100 justify-content-between">
+      <h5>Listado de Preferencias</h5>
+    </div>
+      <span *ngFor="let preferencia of preferencias">
+  <div class="card bg-light text-dark" id="card-color" >
+    <div class="card-body text-center">
+      <h5>{{preferencia.nombrePreferencia}}</h5>
+     <p class="mb-1">{{preferencia.descripcionPreferencia}}</p>
+    </div>
+  </div>
+     </span>
+  </div> 

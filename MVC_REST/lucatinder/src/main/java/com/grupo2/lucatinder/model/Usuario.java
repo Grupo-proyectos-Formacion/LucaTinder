@@ -22,8 +22,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -52,7 +50,6 @@ public class Usuario {
 	@Column(name="imagen_usuario")
 	private String imagenUsuario;
 	
-	@JsonIgnore
 	@ManyToMany
 	(fetch= FetchType.EAGER,   cascade = CascadeType.ALL)
 	@JoinTable(name="usuario_preferencia", joinColumns={@JoinColumn(name ="id_usuario", referencedColumnName ="id_usuario")},
@@ -162,11 +159,8 @@ public Usuario(String nombreUsuario, String descripcionUsuario, int edadUsuario,
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", descripcionUsuario="
 				+ descripcionUsuario + ", edadUsuario=" + edadUsuario + ", ciudadUsuario=" + ciudadUsuario
-				+ ", sexoUsuario=" + sexoUsuario + ", imagenUsuario=" + imagenUsuario + ", preferenciaUsuario="
-				+ preferenciaUsuario + "]";
+				+ ", sexoUsuario=" + sexoUsuario + "]\n";
 	}
-
-	
 
 	
 	

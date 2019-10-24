@@ -5,7 +5,7 @@ import { ModificarUsuarioComponent } from "./components/modificar-usuario/modifi
 import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
-import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
+import { PreferenciaComponent } from './components/preferencia/preferencia.component';
 
 const routes: Routes = [
   {path:'Alta', component:AltaUsuarioComponent} ,
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'Elegir',component:LikeDislikeComponent},
   {path:'verPerfil', component:ListarUsuarioComponent},
   {path:'listarPerfiles', component:ListarPerfilesComponent},
-  {path:'swipe', component:SwipeUsuariosComponent},
+  {path:'Preferencia', component: PreferenciaComponent}
 ];
 
 @NgModule({

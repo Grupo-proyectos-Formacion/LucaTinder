@@ -35,8 +35,8 @@ public class ServicioPreferenciaImpl implements ServicioPreferencia {
 
 	@Override
 	public Preferencia getById(int id) {
-		
-		return daoPreferencia.getOne(id);
+		daoPreferencia.getOne(id);
+		return null;
 	}
 
 	@Override

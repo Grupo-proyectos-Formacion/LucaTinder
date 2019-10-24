@@ -1,40 +1,45 @@
 <!DOCTYPE HTML>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<title>LUCA TINDER</title>
-	
-	<link href="..\static\css\bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-	<link href="..\static\css\estilosPersonalizados.css" rel="stylesheet" th:href="@{/css/estilosPersonalizados.css}" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="usuarios/header :: head">
 </head>
-
 <body>
-	<div th:replace="usuarios/navBarUsuarioSinOpc :: navBarUsuarioSinOpc"></div> 
-	
-	<div class=" p-5 mb-5" style="min-height:100vh;">
-		<div class="row p-5 m-auto" style="min-height:100vh;">
-			<div th:each="usuario : ${usuarios}" class="col-3 card m-5 p-1" style="width: 18rem;">
-			  <img style="max-height:300px;" th:src="${usuario.imagenUsuario}" class="card-img-top" alt="persona single">
-			  <div class="card-body">
-			    <h5 class="card-title" th:text="${usuario.nombreUsuario}"></h5>
-			    <p th:text="${usuario.descripcionUsuario}" class="card-text"></p>
-			  </div>
-			  <ul class="list-group list-group-flush">
-			    <li th:text="${usuario.edadUsuario}" class="list-group-item "></li>
-			    <li th:if="${usuario.sexoUsuario}" class="list-group-item">Mujer</li>
-			    <li th:if="${!usuario.sexoUsuario}" class="list-group-item">Hombre</li>
-			    <li th:text="${usuario.ciudadUsuario}" class="list-group-item"></li>
-			  </ul>
-			</div>
-		</div>
+	<div th:replace="usuarios/header :: navBar"></div>
+
+	<main role="main" class="container">
+
+	<div class="starter-template">
+		<h1>Usuarios registrados</h1>
+	</div>
+	<div>
+		<table class="table table-striped">
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th>Edad</th>
+				<th>Localidad</th>
+				<th>Sexo</th>
+			</tr>
+			<tr th:each="usuario : ${usuarios}">
+				<td th:text="${usuario.nombreUsuario}">1</td>
+				<td th:text="${usuario.descripcionUsuario}">1</td>
+				<td th:text="${usuario.edadUsuario}">1</td>
+				<td th:text="${usuario.ciudadUsuario}">1</td>
+				<td><a><i th:if="${usuario.sexoUsuario}"
+						class="fa fa-female"></i></a> <a><i
+						th:if="${!usuario.sexoUsuario}" class="fa fa-male"></i></a></td>
+				<td th:text="${usuario.ciudadUsuario}">1</td>
+			</tr>
+		</table>
+
+
 	</div>
 
-	 <div th:replace="usuarios/footer :: footer"></div>
-	 
-	<script src="..\static\js\jquery-3.4.1.js" th:src="@{/js/jquery-3.4.1.js}"></script>	
-	<script src="https://kit.fontawesome.com/2dfa1c2dc6.js" crossorigin="anonymous"></script>
-	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>							
+	</main>
+	<!-- /.container -->
+	<!-- 
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	 -->
 </body>
 </html>

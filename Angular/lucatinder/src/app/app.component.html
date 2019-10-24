@@ -1,29 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div >
-    <nav class="navbar navbar-light  bg-dark fixed-top " id="mainNav">
-          <a class="navbar-brand text-light js-scroll-trigger" href="#page-top">LUCA TINDER</a>
-         
-          <div id="navbarResponsive">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="text-light nav-link"  routerLink="/Alta">Crear cuenta</a>
-              </li>
-              <li class="nav-item">
-                  <a class="text-light nav-link"  routerLink="/Modificar">Modificar cuenta</a>
-                </li>
-              <li class="nav-item">
-                  <a class="text-light nav-link"  routerLink="/verPerfil">Ver mi perfil</a>
-              </li>
-              <li class="nav-item">
-                  <a class="text-light nav-link"  routerLink="/swipe">Posibles matches</a>
-              </li>
-              <li class="nav-item">
-                  <a class="text-light nav-link"  routerLink="/listarPerfiles">Matches</a>
-              </li>
-            </ul>
-          </div>
-     </nav>
-</div>
+
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark px-5">
+    <a class="navbar-brand text-white"  href="#">LUCA TINDER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" routerLink="/verPerfil" routerLinkActive="active">Ver perfil <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/Modificar">Modificar cuenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/listarPerfiles" tabindex="-1" aria-disabled="true">Mis Matches</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/Preferencia" tabindex="-1" aria-disabled="true">Mis Preferencias</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/Elegir" tabindex="-1" aria-disabled="true">Buscar Match</a>
+            </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
   
 <div style="min-height: 100vh;" class="row justify-content-center mt-5 pt-5">
   <router-outlet></router-outlet>
