@@ -41,9 +41,12 @@ export class UsuarioService {
   } 
   public getMatches(idUsuario){
     return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/"+idUsuario);
+<<<<<<< HEAD
   }
   public getPreferencias(){
     return this.http.get<Preferencia[]>(myGlobals.url+"/listar/preferencias/rest");
+=======
+>>>>>>> parent of 9bf30a2... navbar en progreso
   }
 
  
