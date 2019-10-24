@@ -7,15 +7,17 @@
      <h1>LucaTinder</h1> 
     </div>
 
-    <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+  
+  
+      <input type="text" id="login"  class="fadeIn second" placeholder="Nombre" (ngModel)="usuario">
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"">
+        <div *ngIf="f.username.errors.required">se requiere nombre de usuario para poder acceder</div>
+      <input type="submit" class="fadeIn fourth" (click)="logIn()" value="Log In">
+    
 
-    <!-- Remind Passowrd -->
+
     <div id="formFooter">
-      <a class="underlineHover" href="#">Crear Cuenta</a>
+      <a class="underlineHover" href="">Crear Cuenta</a>
     </div>
 
   </div>
