@@ -27,6 +27,14 @@
 			    <li th:if="${!usuario.sexoUsuario}" class="list-group-item">Hombre</li>
 			    <li th:text="${usuario.ciudadUsuario}" class="list-group-item"></li>
 			  </ul>
+			  
+			  <div class="card-body">
+			  	<form class="d-flex justify-content-around" th:object="${eleccion}" th:action="@{/eleccion}" method="POST">	
+					<input type="hidden" th:name="id" th:value="${usuario.idUsuario}">
+					<button id="likeado" type="submit" th:name="eleccion" th:value="match" class="card-link fas fa-heart fa-3x"></button>
+					<button id="deslikeado" type="submit" th:name="eleccion" th:value="rechazo" class="card-link fas fa-times fa-4x "></button>
+				</form>	
+			  </div>
 			</div>
 		</div>
 	</div>

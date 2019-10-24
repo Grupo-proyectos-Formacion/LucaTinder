@@ -75,7 +75,9 @@ public class ControlUsuario {
 	@GetMapping("/listar/posiblesMatches/{id}")
 	public String pedirPosiblesMatches(@PathVariable int id, Model model) {
 		List<Usuario> lista = service.pedirPosiblesMatches(service.getById(id));
+		String eleccion ="";
 		model.addAttribute("usuarios", lista);
+		model.addAttribute("eleccion",eleccion);
 		return "usuarios/lista";
 	}
 	
@@ -98,7 +100,7 @@ public class ControlUsuario {
 			System.out.println("Te mola?, ha. " );
 			service.tratarResultadoMatch(true, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
 			}
-		else if(eleccion.equals("rechazo")) { 
+		else if(eleccion.equals("rechazo")) {
 			System.out.println("No te mola huh?" ); 
 			service.tratarResultadoMatch(false, this.usuarioSesion, service.getById(Integer.parseInt(idTronista)));
 			}
@@ -107,7 +109,7 @@ public class ControlUsuario {
 		System.out.println(model);
 		System.out.println(eleccion + "Esta ha sido la eleccion");
 		
-		return "redirect:/";
+		return "redirect:/listar/posiblesMatches/"+this.usuarioSesion.getIdUsuario();
 	}
 	
 	

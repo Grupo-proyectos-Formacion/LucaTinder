@@ -20,25 +20,30 @@
 				<tr>
 					<th>Nombre</th>
 					<td class="text-right">
-					<input type="hidden" th:field="${usuario.idUsuario}" />
-					<input type="text" th:field="${usuario.nombreUsuario}" th:value="${usuario.nombreUsuario}"/></td>
+							<input type="hidden" th:field="${usuario.idUsuario}" />
+							<input type="text" class="form-control ml-auto w-75" th:field="${usuario.nombreUsuario}" th:value="${usuario.nombreUsuario}"/>
+					</td>
 				</tr>
 				<tr>
 					<th>Descripcion</th>
-					<td class="text-right"><input type="text" th:field="${usuario.descripcionUsuario}" th:value="${usuario.descripcionUsuario}"/></td>
+					<td class="text-right">
+						<div>
+							<input type="text" class="form-control ml-auto w-75" th:field="${usuario.descripcionUsuario}" th:value="${usuario.descripcionUsuario}"/>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<th>Edad</th>
-					<td class="text-right"><input type="number" th:field="${usuario.edadUsuario}" th:value="${usuario.edadUsuario}"/></td>
+					<td class="text-right"><input class="form-control ml-auto w-75" type="number" th:field="${usuario.edadUsuario}" th:value="${usuario.edadUsuario}"/></td>
 				</tr>
 				<tr>
 					<th>Ciudad</th>
-					<td class="text-right"><input type="text" th:field="${usuario.ciudadUsuario}" th:value="${usuario.ciudadUsuario}"/></td>
+					<td class="text-right"><input class="form-control ml-auto w-75" type="text" th:field="${usuario.ciudadUsuario}" th:value="${usuario.ciudadUsuario}"/></td>
 				</tr>
 				<tr>	
 					<th>Sexo</th>
 					<td class="text-right"> 
-					   <select th:field="${usuario.sexoUsuario}" th:value="${usuario.sexoUsuario}" >
+					   <select class="form-control ml-auto w-75" th:field="${usuario.sexoUsuario}" th:value="${usuario.sexoUsuario}" >
 					        <option th:value="0">Hombre</option>
 					        <option th:value="1">Mujer</option>
 					    </select> 
@@ -46,7 +51,7 @@
 				</tr>
 				<tr>
 					<th>URL Imagen</th>
-					<td class="text-right"><input type="text" th:field="${usuario.imagenUsuario}" th:value="${usuario.imagenUsuario}"/></td>
+					<td class="text-right"><input class="form-control ml-auto w-75" type="text" th:field="${usuario.imagenUsuario}" th:value="${usuario.imagenUsuario}"/></td>
 				</tr>
 				<tr align="center">
 					<td colspan="2" ><input class="btn btn-primary" type="submit" value="GUARDAR"></td>
@@ -63,3 +68,8 @@
 	<script src="..\static\js\bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
+
+
+
+
+

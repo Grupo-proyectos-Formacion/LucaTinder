@@ -66,5 +66,7 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 		List<Usuario> resultados = query.getResultList();
  		return resultados.get(0);
 	}
+	
+	
 }
 
