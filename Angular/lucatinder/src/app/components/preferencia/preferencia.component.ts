@@ -25,6 +25,7 @@ export class PreferenciaComponent implements OnInit {
     this.service.getPreferencias().subscribe(
       data => {
         this.preferencias=data;
+        console.log("---------------------------"+data);
       },
       error => console.log(error)
     )

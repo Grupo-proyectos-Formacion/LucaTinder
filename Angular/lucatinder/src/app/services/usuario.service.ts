@@ -42,7 +42,7 @@ export class UsuarioService {
   } 
 
   public getPreferencias(){
-    return this.http.get<Preferencia[]>(myGlobals.url+"/listar/preferencias");
+    return this.http.get<Preferencia[]>(myGlobals.url+"/listar/preferencias/rest");
   }
 
  
