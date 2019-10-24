@@ -12,7 +12,13 @@ import { LikeDislikeComponent } from './components/like-dislike/like-dislike.com
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import {UsuarioService} from './services/usuario.service';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
+<<<<<<< Updated upstream
 import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
+=======
+import { PreferenciaComponent } from './components/preferencia/preferencia.component';
+import { SwipeComponent } from './components/swipe/swipe.component';
+
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +27,13 @@ import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuari
     LikeDislikeComponent,
     ListarUsuarioComponent,
     ListarPerfilesComponent,
+<<<<<<< Updated upstream
     SwipeUsuariosComponent
+=======
+    PreferenciaComponent,
+    SwipeComponent,
+    
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

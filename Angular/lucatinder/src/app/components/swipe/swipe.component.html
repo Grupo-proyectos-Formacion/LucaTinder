@@ -1,0 +1,20 @@
+
+
+    <div  class="d-flex flex-wrap align-center justify-content-center">
+      <span>
+        <div  class="m-5 card text-center"  style="max-width:300px;">
+          <img style="width:300px; height: 300px;" src="{{usuario.imagenUsuario}}" class="img-fluid card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{usuario.nombreUsuario}}</h5>
+            <p class="card-text">{{usuario.descripcionUsuario}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{usuario.ciudadUsuario}}</li>
+            <li class="list-group-item">{{usuario.sexoUsuario}}</li>
+            <li class="list-group-item">{{usuario.edadUsuario}}</li>
+          </ul>
+          <app-like-dislike idTronista={{usuario.idUsuario}} (click)="listaUsuarioActual()"></app-like-dislike>
+       </div>
+    </span>
+  </div>
+  
