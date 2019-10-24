@@ -39,7 +39,12 @@ export class UsuarioService {
   public getPerfiles(idUsuario) {
     return this.http.get<Usuario[]>(myGlobals.url+"/listar/posiblesMatches/rest/"+idUsuario);
   } 
- 
+  public getMatches(idUsuario){
+    return this.http.get<Usuario[]>(myGlobals.url+"/listar/pedirMatchesConfirmados/rest/"+idUsuario);
+  }
+  public logIn(nombreUsuario){
+    return this.http.post(myGlobals.url+"/login/rest",nombreUsuario,httpOptions);
+  }
 }
 
 

@@ -86,8 +86,9 @@ public class ControlUsuario {
 	//*
 	@PostMapping("/crear/usuario")
 	public String guardar(@ModelAttribute Usuario usuario, Model model){
-		System.out.println(usuario);
+		//System.out.println(usuario);
 		 model.addAttribute("usuario" , service.crear(usuario));
+		 this.usuarioSesion = usuario;
 		return "/usuarios/usuario";
 	}	
 	//*
@@ -100,7 +101,7 @@ public class ControlUsuario {
 	
 	@GetMapping("/listar/matches")
 	public String listarMatchesConfirmados(Model model) {
-		Set<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
+		List<Usuario> matches = service.pedirMatchesConfirmados(this.usuarioSesion);
 		System.out.println("-------------------IMPRIMIENDO-MATCHES------------------------");
 		System.out.println(matches);
 		model.addAttribute("usuarios", matches);
@@ -179,14 +180,17 @@ public class ControlUsuario {
 		Preferencia preferencia = servicePreferencia.getById(Integer.parseInt(idPreferencia));
 		//this.usuarioSesion.addPreferenciaUsuario(preferencia);
 		List<Preferencia> preferencias = null;
-		/*if(this.usuarioSesion.getPreferenciaUsuario() == null) {
+		if(usuarioSesion.getPreferenciaUsuario() == null) {
 			preferencias = new ArrayList<>();
-			preferencias.add(preferencia);
-			this.usuarioSesion.setPreferenciaUsuario(preferencias);
-		} else this.usuarioSesion.getPreferenciaUsuario().add(preferencia);*/
-		preferencias = new ArrayList<>();
+		} else preferencias = usuarioSesion.getPreferenciaUsuario();
+		
 		preferencias.add(preferencia);
 		this.usuarioSesion.setPreferenciaUsuario(preferencias);
+		System.out.println("------  "+usuarioSesion);
+		System.out.println("------  "+usuarioSesion.getPreferenciaUsuario());		
+		
+		service.crear(this.usuarioSesion);
+		
 		//this.usuarioSesion.setPreferenciaUsuario(preferencias);
 		System.out.println("LISTA DE PREFERENCIAS DE USUARIO: "+this.usuarioSesion.getPreferenciaUsuario());
 		model.addAttribute("usuario", this.usuarioSesion);

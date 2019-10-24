@@ -13,6 +13,7 @@ import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuar
 import {UsuarioService} from './services/usuario.service';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
 import { LoginComponent } from './components/login/login.component';
+import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     LikeDislikeComponent,
     ListarUsuarioComponent,
     ListarPerfilesComponent,
-    LoginComponent
+    LoginComponent,
+    SwipeUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UsuarioService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

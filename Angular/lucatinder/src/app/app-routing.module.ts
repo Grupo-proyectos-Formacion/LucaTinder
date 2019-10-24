@@ -5,15 +5,16 @@ import { ModificarUsuarioComponent } from "./components/modificar-usuario/modifi
 import { LikeDislikeComponent } from './components/like-dislike/like-dislike.component';
 import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuario.component';
 import { ListarPerfilesComponent } from './components/listar-perfiles/listar-perfiles.component';
-import { LoginComponent } from './components/login/login.component';
-
+import { SwipeUsuariosComponent } from './components/swipe-usuarios/swipe-usuarios.component';
+import { LoginComponent} from './components/login/login.component';
 const routes: Routes = [
   {path:'Alta', component:AltaUsuarioComponent} ,
   {path:'Modificar',component:ModificarUsuarioComponent}, 
   {path:'Elegir',component:LikeDislikeComponent},
   {path:'verPerfil', component:ListarUsuarioComponent},
   {path:'listarPerfiles', component:ListarPerfilesComponent},
-  {path:'', component: LoginComponent}
+  {path:'', component: LoginComponent},
+  {path:'swipe', component:SwipeUsuariosComponent}
 ];
 
 @NgModule({

@@ -27,7 +27,7 @@ export class ListarPerfilesComponent implements OnInit {
   }
 
   poblarPosiblesMatches(){
-    this.service.getPerfiles(this.idUsuarioActual).subscribe(
+    this.service.getMatches(this.idUsuarioActual).subscribe(
       data => {
         this.usuarios = data;
         console.log(data);
