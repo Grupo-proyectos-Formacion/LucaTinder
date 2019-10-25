@@ -18,8 +18,24 @@ public class DaoUsuarioCustomImpl implements DaoUsuarioCustom {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> pedirPosiblesMatches(Usuario usuario) {
-		Query query = entityManager.createNativeQuery("SELECT * FROM usuario WHERE sexo_usuario NOT  LIKE ?", Usuario.class);
-	    query.setParameter(1, usuario.getSexoUsuario());
+		Query query = entityManager.createNativeQuery("SELECT U.* " + 
+				" FROM usuario U " + 
+				" WHERE U.id_usuario !=? " + 
+				" AND U.id_usuario NOT IN (" + 
+				"	SELECT C.id_pretendiente " + 
+				"    FROM contacto C  " + 
+				"    JOIN usuario U ON U.id_usuario = C.id_tronista   " + 
+				"    WHERE U.id_usuario = ?)" + 
+				" AND U.id_usuario NOT IN (" + 
+				"	SELECT D.id_loser  " + 
+				"    FROM descarte D " + 
+				"    JOIN usuario U ON U.id_usuario = D.id_tronista  " + 
+				"    WHERE U.id_usuario = ?);" + 
+				"    ",Usuario.class);
+		//Query query = entityManager.createNativeQuery("SELECT * FROM usuario WHERE sexo_usuario NOT  LIKE ?", Usuario.class);
+	    query.setParameter(1, usuario.getIdUsuario());
+	    query.setParameter(2, usuario.getIdUsuario());
+	    query.setParameter(3, usuario.getIdUsuario());
 	    return query.getResultList();
 	}
 	
