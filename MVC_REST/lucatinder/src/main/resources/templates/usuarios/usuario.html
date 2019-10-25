@@ -28,7 +28,7 @@
 		    <li th:if="${!usuario.sexoUsuario}" class="list-group-item">Hombre</li>
 		    <li th:text="${usuario.ciudadUsuario}" class="list-group-item"></li>
 		    <li class="list-group-item">
-		    Gustos:
+		    Preferencias:
 		    	<ul th:each="pref : ${prefer}">
 		    		<li th:text="${pref.nombrePreferencia}"></li>
 		    	</ul>

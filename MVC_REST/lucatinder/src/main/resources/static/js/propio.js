@@ -1,7 +1,7 @@
 /*SCROLL REVEAL*/	
 	window.sr = ScrollReveal();
 	sr.reveal('.navbar', {
-	  duration:2000,
+	  duration:1000,
 	  origin:'top',
 	  distance: '200px',
 	  delay:'2000'
